@@ -4,7 +4,7 @@
 
 막연한 진로 고민을 구조화하고, 기존 멘토 답변 자산으로 답변 가능한지 검증한 뒤, 필요한 경우 적합한 현직자 멘토에게 연결하며, 새 멘토 답변을 다시 자산화하는 **AI 진로 멘토링 서비스 구현 프로젝트**입니다.
 
-3개의 판단형 Agent와 1개의 자산화 파이프라인으로 구성된 기능 단위 MVP입니다.
+3개의 판단형 Agent와 1개의 자산화 파이프라인으로 구성된 MVP입니다.
 
 ---
 
@@ -114,9 +114,9 @@
 
 하나의 질문 안에 정보 탐색, 개인 상황 판단, 자료 피드백 요청, 멘토 경험 요청이 섞여 있었다. 단일 LLM 호출로는 **질문이 충분히 정제됐는지, 기존 답변으로 답해도 되는지, 어떤 멘토가 적합한지, 답변을 어떻게 재사용할지**를 분리해서 판단할 수 없다.
 
-따라서 각 판단을 분리한 multi-agent 구조를 선택했다. 이 구조에서 각 단계의 책임은 명확하게 분리되고, 검색 가능한 질문은 자산화 답변으로 처리하며, 개인 맥락이 강한 질문은 멘토 매칭으로 넘긴다.
+각 판단을 독립적인 에이전트로 분리하면 두 가지 이점이 생긴다. 첫째, 각 에이전트의 프롬프트와 판단 로직을 독립적으로 개선할 수 있다. 둘째, 중간 결과(Agent 1의 구조화 출력)가 명시적인 데이터로 저장되므로 어느 단계에서 오류가 발생했는지 추적할 수 있다.
 
-맨투맨의 목표는 LLM이 현직자를 대체하는 것이 아니다. **멘토링 자원이 필요한 질문을 더 정확히 선별하고, 반복되는 질문은 자산화된 답변으로 효율적으로 처리하는 것**이다.
+맨투맨의 목표는 LLM이 현직자를 대체하는 것이 아니다. **멘토링 자원이 필요한 질문을 더 정확히 선별하고, 반복되는 질문은 자산화된 답변으로 효율적으로 처리하는 것**이다. 각 에이전트는 그 목표를 위해 서로 다른 판단 책임을 분담한다.
 
 ---
 
@@ -138,15 +138,37 @@
 [행동 B] 충분 → REFINEMENT_PROMPT + 자기검증(CHECK_PROMPT) → 구조화 출력
 ```
 
+충분성 검사는 단순히 필드가 채워졌는지가 아니라 각 필드에 실질적인 정보가 담겼는지를 가중합으로 판단한다. 예를 들어 `알고_싶은_내용`은 전체 가중치의 30%를 차지하며, 이 필드가 막연하면 나머지가 채워져도 정제 단계로 넘어가지 않는다.
+
 **구조화 출력 (단순 정제 질문을 넘어)**
 
-- `question_units`: 복합 질문을 독립 단위로 분리
-- `current_bottleneck`: 멘티가 막힌 지점을 표준 표현으로 분류 (14개 라벨)
-- `hard_case_flags`: requires_artifact_review / recency_sensitive / scope_too_broad
-- `routing_hints`: search_strategy_hint / source_role / target_role / bridge_hypothesis
-- `taxonomy_tags`: 도메인·직무·질문 유형·스킬 태그
+Agent 1의 최종 출력은 정제된 텍스트 질문 하나가 아니라 Agent 2·3이 판단에 활용하는 구조화 메타데이터다.
 
-이 구조화 결과가 Agent 2·3의 판단 기준으로 전달된다.
+- `question_units`: 복합 질문을 독립 단위로 분리. "직무 이해"와 "준비 방법"이 섞인 질문을 분리해야 각 단위를 별도로 검색하거나 멘토에게 전달할 수 있다.
+- `current_bottleneck`: 멘티가 막힌 지점을 14개 표준 라벨로 분류. 단순 직무 분류가 아니라 "정보_탐색", "방향_결정", "실행_계획", "자료_피드백" 등 **막힘의 성격**으로 구분한다. 이 라벨이 Agent 2의 검색 전략과 Agent 3의 멘토 선별 기준에 직접 활용된다.
+- `hard_case_flags`: 세 가지 위험 신호를 감지한다.
+  - `requires_artifact_review`: 자소서·포트폴리오 등 실제 자료 검토가 필요한 질문 → Agent 2 검색을 생략하고 즉시 멘토 연결
+  - `recency_sensitive`: 채용 공고·최신 트렌드처럼 자산화된 답변이 오래됐을 수 있는 질문
+  - `scope_too_broad`: 멘토 1명이 답하기 어려울 만큼 범위가 넓은 질문
+- `routing_hints`: Agent 2·3에 전달되는 검색·매칭 힌트
+  - `search_strategy_hint`: search_first(기존 자산 우선) / mentor_first(개인 맥락 우선)
+  - `source_role` / `target_role`: 현재 직무와 목표 직무
+  - `bridge_hypothesis`: 전환 가능성의 근거 가설
+- `taxonomy_tags`: 도메인·직무·질문 유형·커리어 단계 태그. 검색 필터와 자산화 메타데이터로 활용
+
+이 구조화 결과 전체가 `question_sessions.json`에 저장되어 Agent 2·3의 판단 입력으로 전달된다.
+
+**Hard-case 처리 규칙**
+
+실제 잇다 Q&A 50건을 분석한 결과, 다음 유형의 질문들이 일반적인 정제·검색 흐름으로 처리하기 어려운 케이스로 반복 등장했다.
+
+| 케이스 유형 | 감지 방법 | 처리 |
+|------------|----------|------|
+| 자소서·포트폴리오 피드백 요청 | 키워드 + requires_artifact_review | 즉시 멘토 연결 |
+| "최근" 채용 트렌드 질문 | recency_sensitive 감지 | Agent 2 검증 시 최신성 가중치 상향 |
+| 직무 전환 가능성 판단 요청 | current_bottleneck = 방향_결정 | mentor_first 전략 강제 |
+| "뭐부터 해야 하나요" 류 | scope_too_broad 감지 | question_units 분해 강제 |
+| 개인정보 포함 (회사명·학번 등) | PII 패턴 감지 | safe_context 생성 (원본 제거) |
 
 ---
 
@@ -154,30 +176,40 @@
 
 **역할:** 기존 자산화 답변으로 답할 수 있는지 판단하고, 가능하면 AI가 직접 답변한다.
 
-단순 RAG와의 차이는 검색된 답변을 무조건 사용하지 않는다는 점이다. 관련성, 근거 충분성, 상황 적합성, 최신성, 개인정보 안전성을 검증한 후 분기한다.
+단순 RAG(Retrieval-Augmented Generation)와의 핵심 차이는 검색된 답변을 무조건 활용하지 않는다는 점이다. 관련성이 높더라도 질문자의 상황에 맞지 않거나 자료 검토가 필요하거나 최신성이 의심되면 멘토 연결로 분기한다.
 
 **에이전트 루프**
 
 ```
-[관찰1] hard_case_flags 선처리
-   → requires_artifact_review=True → 즉시 멘토 연결 (검색 생략)
-[판단] 전략 결정: search_first / mentor_first
-[행동1] 임베딩 검색 → 코사인 유사도 상위 5개 후보
-[행동2] 5기준 검증 (LLM 판단, 점수 계산은 코드)
-[관찰3] 점수 구간 판단
-   → score ≥ threshold : llm_direct
-   → mid ≤ score < threshold : partial_with_mentor_suggest
-   → score < mid : mentor_needed
+[선처리] hard_case_flags 확인
+   → requires_artifact_review=True → 즉시 mentor_needed 반환 (검색 생략)
+[판단] 전략 결정
+   → search_strategy_hint = search_first / mentor_first
+[행동1] text-embedding-3-small으로 refined_question 임베딩
+        → mentor_answers.json에서 코사인 유사도 상위 5개 후보 추출
+[행동2] 5기준 검증 (GPT-4o, 각 기준 0.0~1.0 점수)
+   ① 관련성: 질문의 핵심 직무·상황과 답변이 얼마나 부합하는가
+   ② 근거 충분성: 답변에 구체적 경험·수치·절차가 담겼는가
+   ③ 최신성: 채용 환경·트렌드 변화를 고려해도 유효한가 (recency_sensitive면 가중치 상향)
+   ④ 상황 적합성: 멘티의 현재 상태·제약 조건과 답변 맥락이 맞는가
+   ⑤ 개인정보 안전: 답변에 특정인 식별 가능 정보가 포함되지 않았는가
+[관찰] 최종 점수 계산 (가중합) → 구간 분류
 ```
 
 **임계값 설계**
+
+search_first와 mentor_first는 질문 성격이 다르기 때문에 직접 답변 허용 기준을 달리했다. mentor_first는 개인 맥락이 강한 질문이므로 더 높은 품질 기준을 요구한다.
 
 | 전략 | 직접 답변 기준 | 부분 답변 기준 | 최소 유사도 |
 |------|--------------|--------------|-----------|
 | search_first | 0.65 | 0.45 | 0.50 |
 | mentor_first | 0.75 | 0.50 | 0.45 |
 
-mentor_first는 개인 맥락이 강한 질문이므로 더 높은 품질 기준을 요구한다.
+**출력 분기**
+
+- `llm_direct`: 기존 자산을 재구성해 AI가 직접 답변 → 멘토 불필요
+- `partial_with_mentor_suggest`: AI가 부분 답변 제공 + 멘토 연결 권유
+- `mentor_needed`: 검색 결과 불충분 → Agent 3으로 이관
 
 ---
 
@@ -185,20 +217,28 @@ mentor_first는 개인 맥락이 강한 질문이므로 더 높은 품질 기준
 
 **역할:** 멘티의 질문과 배경을 바탕으로 적합한 멘토 Top-3를 추천한다.
 
-단순 직무 유사도 매칭이 아니라 `current_bottleneck`, `source_role`, `target_role`, `bridge_hypothesis`, `transferable_skills`를 활용해 멘티가 막힌 지점을 가장 잘 해결할 수 있는 멘토를 선별한다. 멘티에게 "누구를 찾아야 할지"까지 요구하지 않는다.
+단순 직무 유사도 매칭이 아니다. `current_bottleneck`(막힌 지점의 성격), `source_role`→`target_role`(전환 방향), `bridge_hypothesis`(전환 가능성 근거), `transferable_skills`(이전 가능 역량)를 함께 활용해 멘티가 막힌 지점을 가장 잘 해결할 수 있는 멘토를 선별한다. 멘티에게 "누구를 찾아야 할지"까지 요구하지 않는다.
 
 **에이전트 루프 (최대 2회)**
 
 ```
 [시도 1] min_sim = 0.30
-   Step 1: 3채널 통합 임베딩 유사도 (프로필 + 경험 + 기존 답변)
-   Step 2: 규칙 필터 + 도메인·병목·전환 보너스
-   Step 3: 재정렬 (유사도×0.55 + 만족도×0.20 + 활동량×0.10 + 수용가능×0.15)
+   Step 1: 3채널 통합 임베딩 유사도
+     ① 프로필 임베딩 (직무·경력·기술스택)
+     ② 경험 임베딩 (커리어 전환 경험 포함)
+     ③ 기존 답변 임베딩 (mentor_answers.json — 실제로 어떤 질문에 답했는가)
+   Step 2: 규칙 필터
+     → 도메인 일치 보너스 / 병목 유형 일치 보너스 / source→target 전환 경험 보너스
+   Step 3: 최종 점수 재정렬
+     → 유사도×0.55 + 만족도×0.20 + 활동량×0.10 + 수용가능×0.15
    Step 4: 상위 후보 추출
-[관찰] 품질 평가 (후보 수 < 3 or 평균 점수 < 0.40 → 부족)
+[관찰] 품질 평가
+   → 후보 수 < 3 또는 평균 점수 < 0.40 → 부족 판단
 [판단] 부족 → min_sim = 0.15로 완화 후 재시도
-[행동] LLM Top-3 선별 + 추천 근거 생성
+[행동] GPT-4o로 Top-3 최종 선별 + 각 멘토에 대한 추천 근거 생성
 ```
+
+3채널 임베딩 유사도를 통합하는 이유는 프로필 텍스트만으로는 "이 멘토가 실제로 이런 질문에 잘 답하는가"를 측정하기 어렵기 때문이다. 기존 답변 임베딩을 채널로 추가하면 실제 답변 품질과 스타일이 반영된다.
 
 ---
 
@@ -211,12 +251,33 @@ mentor_first는 개인 맥락이 강한 질문이므로 더 높은 품질 기준
 ```
 멘토 답변 수신
     → 이중 동의 확인 (멘토 + 멘티)
-    → 품질 판단: 개인맥락 강도 / 정보 밀도 / 시의성 / 기밀성
-    → 통과 시: 임베딩 생성 + 메타데이터 태그 생성 → DB 저장
+    → 품질 판단 (4기준)
+      ① 개인맥락 강도: 특정인에게만 유효한 내용이 얼마나 많은가
+      ② 정보 밀도: 다른 멘티에게 실질적 도움이 될 구체 정보가 있는가
+      ③ 시의성: 시간이 지나도 유효한 내용인가
+      ④ 기밀성: 회사·개인 식별 정보 포함 여부
+    → 통과 시: text-embedding-3-small로 임베딩 생성
+             + 도메인·직무·질문유형 메타데이터 태그 생성
+             → mentor_answers.json에 저장
     → 다음 유사 질문 시 Agent 2의 검색 대상으로 포함
 ```
 
-답변이 누적될수록 AI 직접 답변 비율이 높아지고 멘토에게 전달되는 질문은 개별 맥락이 중요한 케이스로 좁혀진다. **사용이 늘수록 서비스 품질과 운영 효율이 동시에 개선되는 자기강화 구조**다.
+답변이 누적될수록 Agent 2가 더 많은 질문을 기존 자산으로 처리할 수 있고, 멘토에게 전달되는 질문은 개별 맥락이 중요한 케이스로 좁혀진다. **사용이 늘수록 서비스 품질과 운영 효율이 동시에 개선되는 자기강화 구조**다.
+
+---
+
+## 💾 DB 설계 — 2계층 분리
+
+세션별 임시 상태와 사용자의 장기 프로필을 혼합하면 프로필이 오염된다는 문제를 방지하기 위해 DB를 두 계층으로 분리했다.
+
+| 계층 | 파일 | 역할 |
+|------|------|------|
+| 장기 프로필 | `mentees.json` / `mentors.json` | 반복 사용 시 누적되는 멘티 맥락, 멘토 프로필 |
+| 세션 단위 | `question_sessions.json` | 한 번의 질문 흐름에서 Agent 1이 생성한 구조화 출력 |
+| 자산 | `mentor_answers.json` | 임베딩 포함 자산화 답변 |
+| 경험 이력 | `mentee_experiences.json` / `mentor_experiences.json` | 커리어 전환·활동 기록 |
+
+Agent 1이 세션을 종료할 때 `current_bottleneck`과 `taxonomy_tags`가 멘티 장기 프로필에 반영되어, 다음 세션에서 에이전트가 이전 맥락을 활용할 수 있다.
 
 ---
 
@@ -224,32 +285,48 @@ mentor_first는 개인 맥락이 강한 질문이므로 더 높은 품질 기준
 
 AI 출력물을 그대로 신뢰하지 않고, 어떤 판단이 안정적이고 어떤 판단이 어려운지 직접 확인했다.
 
+### 사전 작업: 잇다 Q&A 50건 분석
+
+평가 설계 전에 실제 잇다 멘토링 플랫폼의 Q&A 50건을 수집·분석했다. 각 질문을 직무 도메인, 질문 유형, 막힌 지점의 성격, 멘토에게 기대하는 답변 유형으로 분류하고, 이 분석 결과를 바탕으로 두 가지 산출물을 만들었다.
+
+첫째, Agent 1의 `current_bottleneck` 14개 표준 라벨과 `hard_case_flags` 감지 규칙 — 실제 질문 패턴에서 귀납적으로 도출했다.
+
+둘째, 초기 자산 DB — 50건을 직접 구조화해 `seed_real_cases.py`로 씨딩했다.
+
 ### Agent 1 평가 설계
 
-실제 멘토링 질문 50건을 분석해 Agent 1 설계 가이드라인을 만들었다. 그중 복합질문, 직무전환, 최신트렌드, 자료피드백, 가능성판단 등 판단이 까다로운 12개 케이스를 선별해 사람이 직접 gold annotation을 달았다.
+50건 중 복합질문, 직무전환, 최신트렌드, 자료피드백 요청, 가능성 판단 등 판단이 까다로운 12개 케이스를 선별해 사람이 직접 gold annotation을 달았다. Gold JSON은 각 케이스마다 `question_units`, `current_bottleneck`, `hard_case_flags`, `routing_hints`, `taxonomy_tags`, `refined_question`의 기대 출력값을 포함한다.
 
-`eval/eval_runner.py`가 Agent 1의 `analyze()` 메서드를 single-shot으로 호출하고, 출력 결과를 gold와 자동 비교한다.
+`eval/eval_runner.py`가 Agent 1의 `analyze()` 메서드를 single-shot으로 호출하고, 출력 결과를 gold와 자동 비교한다. 각 평가 항목은 단순 일치/불일치가 아니라 의미적 overlap이나 LLM judge를 활용해 채점한다.
 
 **평가 항목 및 가중치**
 
-| 평가 항목 | 가중치 | 점수 | 해석 |
-|----------|--------|------|------|
-| privacy_safe | 5% | **1.00** | PII 제거 안정적 |
-| hard_case_flags | 20% | **0.92** | 자료검토 필요·최신성·위험 플래그 감지 안정적 |
-| routing | 15% | 0.64 | mentor_first 판단은 강하나 search_first 분기 개선 여지 확인 |
-| refined_question | 5% | 0.58 | 전체 방향은 맞지만 일부 세부 요소 누락 |
-| current_bottleneck | 20% | 0.42 | 유사 병목 라벨 간 혼동 |
-| taxonomy_tags | 10% | 0.26 | domain은 잡지만 role/question_type 태그가 약함 |
-| question_units | 25% | 0.29 | 복합 질문을 하나로 압축하는 경향 |
-| **전체 평균** | | **0.54** | |
+| 평가 항목 | 가중치 | 점수 | 채점 방식 | 해석 |
+|----------|--------|------|----------|------|
+| privacy_safe | 5% | **1.00** | PII 패턴 매칭 | 개인정보 제거 완벽 |
+| hard_case_flags | 20% | **0.92** | 플래그 일치 비교 | 위험 신호 감지 안정적 |
+| routing | 15% | 0.64 | 필드 완전 일치 | mentor_first 강하나 search_first 분기 개선 여지 |
+| refined_question | 5% | 0.58 | GPT-4o-mini LLM judge | 방향은 맞지만 일부 세부 요소 누락 |
+| current_bottleneck | 20% | 0.42 | 완전 일치 | 유사 병목 라벨 간 혼동 |
+| taxonomy_tags | 10% | 0.26 | 태그 Recall | domain 잡지만 role·question_type 약함 |
+| question_units | 25% | 0.29 | 키워드 overlap | 복합 질문을 하나로 압축하는 경향 |
+| **전체 평균** | | **0.54** | | |
 
 **검증을 통해 확인한 것**
 
-Agent 1은 위험 감지와 개인정보 보호에는 안정적으로 작동한다. 반면 복합 질문을 독립 단위로 분해하는 것과 유사한 병목 라벨 간 정확한 분류는 더 어려운 문제임을 확인했다.
+Agent 1은 위험 감지(hard_case_flags 0.92)와 개인정보 보호(privacy_safe 1.00)에서는 안정적이다. 반면 복합 질문을 독립 단위로 분해하는 것(question_units 0.29)과 유사한 병목 라벨 간 정확한 분류(current_bottleneck 0.42)는 더 어려운 문제임을 확인했다.
 
-이 결과를 바탕으로 Agent 2·3에서는 Agent 1의 구조화 결과를 확정값으로 사용하기보다, 검색 검증과 멘토 매칭 단계에서 다시 한 번 안전하게 분기하도록 설계했다. 또한 프롬프트 개선 1회 시도 후 동일 eval셋 재평가를 통해 개선 방향의 효과를 검증했으며, 같은 평가셋으로 반복 개선하는 것이 과적합(overfitting)을 유발한다는 판단 하에 1회로 종료했다.
+이 결과를 바탕으로 Agent 2·3에서는 Agent 1의 구조화 결과를 확정값으로 사용하기보다, 검색·검증과 멘토 매칭 단계에서 다시 한 번 안전하게 분기하도록 설계했다.
 
-Agent 2(검색·검증)와 Agent 3(멘토 매칭)은 외부 DB 품질에 의존하는 구조여서 현재 초기 버전에서는 자동 정량 평가보다 설계 원칙과 로직 검증을 우선했다. 실데이터가 누적된 이후 정량 평가를 추가할 예정이다.
+**프롬프트 개선 실험**
+
+평가 결과를 바탕으로 프롬프트 개선을 1회 시도했다. `current_bottleneck` 라벨 구분 예시를 추가하는 방향으로 수정한 결과, `current_bottleneck`은 0.417→0.583으로 개선됐지만 `hard_case_flags`(0.917→0.750), `routing`(0.639→0.500), `question_units`(0.292→0.180)이 동반 하락해 전체 점수가 0.541→0.488로 낮아졌다. 프롬프트의 한 부분을 상세화하면 다른 판단에 간섭이 발생했다.
+
+이 결과를 확인하고 개선을 롤백했다. 같은 평가셋으로 반복 최적화를 계속하면 과적합(overfitting)으로 실제 분포에서 성능이 낮아질 수 있다는 판단 하에 1회로 종료했다.
+
+**Agent 2·3 평가의 한계**
+
+Agent 2(검색·검증)와 Agent 3(멘토 매칭)은 DB 품질이 평가 결과에 직접 개입하는 콜드 스타트 문제가 있다. 멘토 풀이 50명이고 초기 자산 50건인 상태에서는, DB 범위를 벗어난 질문이 들어오면 DB 커버리지 부족이 에이전트 판단 품질 부족처럼 측정된다. 두 변수를 분리할 수 없는 상황에서 정량 평가보다 설계 원칙과 로직 검증을 우선했다. 실제 데이터가 누적된 이후 정량 평가를 추가할 예정이다.
 
 ---
 
@@ -356,22 +433,39 @@ python data/seed_real_cases.py --replace
 
 ## 📊 현재 데이터 현황
 
-`generate_personas.py`는 멘티·멘토 각 50명 단위의 페르소나 생성을 지원한다. 아래 표는 10개 도메인별 대표 시드 구성을 요약한 것이다.
+### 페르소나 (멘토·멘티)
 
-| # | 도메인 | 멘토 | 멘티 |
-|---|--------|------|------|
-| 1 | 데이터 분석 / AI | 3명 | 3명 |
-| 2 | 마케팅 | 3명 | 3명 |
-| 3 | 컨설팅 | 3명 | 3명 |
-| 4 | 금융 / 투자 | 3명 | 3명 |
-| 5 | IT 개발 | 3명 | 3명 |
-| 6 | UX / 디자인 | 3명 | 3명 |
-| 7 | HR / 조직문화 | 3명 | 3명 |
-| 8 | 서비스 기획 | 3명 | 3명 |
-| 9 | 미디어 / 콘텐츠 | 3명 | 3명 |
-| 10 | 비영리 / 사회적기업 | 3명 | 3명 |
+실제 잇다 멘토링 50건 질문 패턴을 분석해 도메인·질문 유형·커리어 단계를 기준으로 스펙을 설계했다. 도메인별 질문 빈도가 다르기 때문에 균등 배분이 아닌 실제 분포를 반영했다.
 
-**초기 자산:** 자산화 답변 50개 (10개 도메인 × 5개 시나리오, 임베딩 포함)
+| 도메인 | 멘토 | 멘티 |
+|--------|------|------|
+| IT개발 / 데이터분석 | 10명 | 10명 |
+| 마케팅 / MD | 10명 | 10명 |
+| 금융 / 투자 | 7명 | 7명 |
+| 전략기획 / 컨설팅 | 5명 | 5명 |
+| HR / 인사 | 5명 | 5명 |
+| 연구개발 / 생산·제조 | 5명 | 5명 |
+| 디자인 / UX | 4명 | 4명 |
+| 홍보 / 영업 / 기타 | 4명 | 4명 |
+| **합계** | **50명** | **50명** |
+
+### 초기 자산 답변
+
+실제 잇다 Q&A 50건을 `seed_real_cases.py`로 씨딩했다. 도메인별 건수는 멘티 질문 분포를 그대로 따르며, 각 답변에 임베딩이 포함되어 Agent 2 검색 대상으로 즉시 활용된다.
+
+| 도메인 | 답변 수 |
+|--------|--------|
+| IT개발 / 데이터분석 | 10개 |
+| 마케팅 / MD | 10개 |
+| 금융 / 투자 | 7개 |
+| 홍보 / CSR | 5개 |
+| 전략기획 | 5개 |
+| 생산 / 품질 / 제조 | 3개 |
+| 디자인 / 예술 | 3개 |
+| 유통 / 무역 | 3개 |
+| 영업 | 3개 |
+| 기타 | 1개 |
+| **합계** | **50개** |
 
 ---
 
@@ -391,11 +485,29 @@ python data/seed_real_cases.py --replace
 
 ## 📚 참고 문헌
 
+### 사회·구조 분석
+
 - KDI (2025). 채용 트렌드 분석: 수시채용 전환 현황
 - 잡코리아 (2021). 대학생 진로 결정 현황 조사
 - 한국직업능력연구원 (2024). 대학 진로교육 현황조사
 - Bourdieu, P. (1986). *The Forms of Capital*. In J. Richardson (Ed.), Handbook of Theory and Research for the Sociology of Education.
 
----
+### AI Agent 설계 및 프롬프트 엔지니어링
 
-작성일: 2026-06-23 | 개발자: 박수영 (취정사)
+- Google DeepMind (2024). *Prompt Engineering Whitepaper*. Google.
+- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2023). ReAct: Synergizing Reasoning and Acting in Language Models. *ICLR 2023*.
+- Schick, T., Dwivedi-Sett, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L., Cancedda, N., & Scialom, T. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. *NeurIPS 2023*.
+
+### 멀티에이전트 및 LLM 응용
+
+- Wang, L., Ma, C., Feng, X., Zhang, Z., Yang, H., Zhang, J., Chen, Z., Tang, J., Chen, X., Lin, Y., Zhao, W. X., Wei, Z., & Wen, J. (2024). A Survey on Large Language Model based Autonomous Agents. *Frontiers of Computer Science*.
+- Xi, Z., Chen, W., Guo, X., He, W., Ding, Y., Hong, B., Zhang, M., Wang, J., Jin, S., Zhou, E., Zheng, R., Fan, X., Wang, X., Xiong, L., Zhou, Y., Wang, W., Jiang, C., Zou, Y., Liu, X., ... Gui, T. (2023). The Rise and Potential of Large Language Model Based Agents: A Survey. *arXiv preprint arXiv:2309.07864*.
+- Tang, J., Yang, Y., Wei, W., Shi, L., Su, L., Cheng, S., Deng, Y., & Huang, C. (2025). Deep Researcher with Test-Time Diffusion. *arXiv preprint*.
+
+### 경량화 및 효율화
+
+- Xiao, G., Lin, J., Seznec, M., Wu, H., Demouth, J., & Han, S. (2023). SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models. *ICML 2023*.
+
+### 강의 및 학습 자료
+
+- 서울대학교 DSBA 연구실 (Data Science & Business Analytics Lab). LLM 기반 에이전트 시스템 관련 강의 자료.
