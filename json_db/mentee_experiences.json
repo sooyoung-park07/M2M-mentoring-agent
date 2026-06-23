@@ -1,0 +1,14 @@
+{
+  "schema_name": "mentee_experiences",
+  "description": "멘티 경험 기록 DB",
+  "fields": {
+    "experience_id": "string",
+    "mentee_id": "string",
+    "type": "string",
+    "title": "string",
+    "description": "string",
+    "period": "string",
+    "created_at": "string"
+  },
+  "records": []
+}

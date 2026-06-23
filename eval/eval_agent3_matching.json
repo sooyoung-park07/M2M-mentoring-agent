@@ -1,0 +1,269 @@
+{
+  "description": "Agent 3 멘토매칭 평가셋 — 5개 시나리오 (transition_type별 매칭 품질 평가)",
+  "evaluation_metrics": [
+    "top1_mentor_correct",
+    "bridge_hypothesis_matched",
+    "needed_expertise_covered",
+    "transition_type_matched"
+  ],
+  "cases": [
+    {
+      "case_id": "EVAL_A3_001",
+      "category": "직무전환형 — SCM→PM",
+      "mentee_constraints": {
+        "target_role": "PM/PO",
+        "source_role": "SCM (자재관리·생산계획)",
+        "current_bottleneck": "기존경력_재해석",
+        "needed_expertise": [
+          "직무전환 경험",
+          "이력서 포지셔닝",
+          "PM/PO 실무"
+        ],
+        "transferable_skills": [
+          "프로젝트 일정관리",
+          "이해관계자 조율"
+        ],
+        "target_domain_candidates": [
+          "IT 기획",
+          "서비스 기획"
+        ]
+      },
+      "candidate_mentors": [
+        {
+          "mentor_id": "m_a3_001",
+          "current_role": "스타트업 PM",
+          "career_path": "개발자 → PM",
+          "answer_summaries": [
+            "사이드 프로젝트로 PM 전환한 방법"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_002",
+          "current_role": "전략기획 과장",
+          "career_path": "SCM → 전략기획",
+          "answer_summaries": [
+            "운영 경험을 기획 직무로 재해석하는 방법",
+            "이해관계자 조율 경험 어필법"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_003",
+          "current_role": "대기업 사업기획",
+          "career_path": "마케팅 → 기획",
+          "answer_summaries": [
+            "기획 직무 이직 준비 일반 가이드"
+          ]
+        }
+      ],
+      "gold": {
+        "top_mentor_id": "m_a3_002",
+        "reason": "SCM 출신으로 기획 전환 성공 경험 보유. source_role 일치 + 기존경력 재해석 expertise 보유"
+      }
+    },
+    {
+      "case_id": "EVAL_A3_002",
+      "category": "기술전이형 — 바이오 QC 이직",
+      "mentee_constraints": {
+        "target_role": "",
+        "source_role": "바이오 의약품 QC (세포치료제)",
+        "current_bottleneck": "보유기술_전이가능성_판단",
+        "needed_expertise": [
+          "제약 QC/QA 이직",
+          "세포치료제 시험법 시장가치"
+        ],
+        "transferable_skills": [
+          "무균시험법",
+          "Real-Time PCR",
+          "GMP"
+        ],
+        "target_domain_candidates": [
+          "제약 QA",
+          "CRO",
+          "바이오벤처"
+        ]
+      },
+      "candidate_mentors": [
+        {
+          "mentor_id": "m_a3_010",
+          "current_role": "대형 제약사 QA 팀장",
+          "career_path": "바이오벤처 QC → 대형 제약사 QA",
+          "answer_summaries": [
+            "GMP 환경 QC 이직 시 어필 전략",
+            "PCR 역량의 시장 가치"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_011",
+          "current_role": "CRO 임상시험 연구원",
+          "career_path": "제약 연구원 → CRO",
+          "answer_summaries": [
+            "CRO 취업 준비 가이드"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_012",
+          "current_role": "의료기기 RA 담당자",
+          "career_path": "제조업 → 의료기기",
+          "answer_summaries": [
+            "의료기기 RA 커리어 준비"
+          ]
+        }
+      ],
+      "gold": {
+        "top_mentor_id": "m_a3_010",
+        "reason": "바이오벤처 QC 출신으로 대형 제약사 QA 이직 성공. source_role 일치 + PCR/GMP 시장가치 expertise 보유"
+      }
+    },
+    {
+      "case_id": "EVAL_A3_003",
+      "category": "서류전략형 — 자산운용사 운용역",
+      "mentee_constraints": {
+        "target_role": "자산운용사 운용역",
+        "source_role": "학생(CFA L1, 학회 팀장)",
+        "current_bottleneck": "서류전략_자소서",
+        "needed_expertise": [
+          "인턴 없는 신입 자소서 전략",
+          "자산운용 서류 통과법"
+        ],
+        "transferable_skills": [
+          "리서치",
+          "밸류에이션",
+          "CFA"
+        ],
+        "target_domain_candidates": [
+          "자산운용사",
+          "증권사 리서치"
+        ]
+      },
+      "candidate_mentors": [
+        {
+          "mentor_id": "m_a3_020",
+          "current_role": "자산운용사 리서치 애널리스트 5년차",
+          "career_path": "학회 활동 → 증권사 인턴 → 자산운용사",
+          "answer_summaries": [
+            "서류 전형에서 학회 경험 어필법",
+            "운용역 준비 커리어 로드맵"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_021",
+          "current_role": "증권사 IB 어소시에이트",
+          "career_path": "비상경 → CFA → 증권사",
+          "answer_summaries": [
+            "비전공 출신 금융권 진입 전략"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_022",
+          "current_role": "핀테크 재무기획",
+          "career_path": "회계법인 → 핀테크",
+          "answer_summaries": [
+            "금융 커리어 전환 경험"
+          ]
+        }
+      ],
+      "gold": {
+        "top_mentor_id": "m_a3_020",
+        "reason": "자산운용사 현직 + 학회 경험 기반 입사 경험. 서류전략 expertise와 target_role 완전 일치"
+      }
+    },
+    {
+      "case_id": "EVAL_A3_004",
+      "category": "직무미분화형 — 스포츠 브랜드 마케터",
+      "mentee_constraints": {
+        "target_role": "스포츠 브랜드 마케터",
+        "source_role": "",
+        "current_bottleneck": "세부직무_미분화",
+        "needed_expertise": [
+          "스포츠 리테일 마케팅",
+          "글로벌 브랜드 채용 기준"
+        ],
+        "transferable_skills": [],
+        "target_domain_candidates": [
+          "스포츠 브랜드",
+          "리테일 마케팅"
+        ]
+      },
+      "candidate_mentors": [
+        {
+          "mentor_id": "m_a3_030",
+          "current_role": "나이키코리아 브랜드 마케터 6년차",
+          "career_path": "대행사 → 나이키",
+          "answer_summaries": [
+            "스포츠 브랜드 신입 채용 기준",
+            "리테일 마케팅 인턴 어필법"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_031",
+          "current_role": "아모레퍼시픽 브랜드 마케터",
+          "career_path": "뷰티 브랜드 마케팅",
+          "answer_summaries": [
+            "뷰티 마케팅 준비법"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_032",
+          "current_role": "FMCG 글로벌 마케팅 매니저",
+          "career_path": "외국계 소비재 마케팅",
+          "answer_summaries": [
+            "외국계 마케팅 직무 준비"
+          ]
+        }
+      ],
+      "gold": {
+        "top_mentor_id": "m_a3_030",
+        "reason": "나이키코리아 현직 마케터 — target_role과 target_domain 완전 일치. 스포츠 리테일 특화 expertise 보유"
+      }
+    },
+    {
+      "case_id": "EVAL_A3_005",
+      "category": "최신트렌드형 — AI 시대 백엔드",
+      "mentee_constraints": {
+        "target_role": "백엔드 개발자",
+        "source_role": "컴공 학부생",
+        "current_bottleneck": "직무전망_불확실성",
+        "needed_expertise": [
+          "AI 협업 개발 경험",
+          "대기업 백엔드 신입 채용 현실"
+        ],
+        "transferable_skills": [],
+        "target_domain_candidates": [
+          "대기업 IT",
+          "스타트업"
+        ]
+      },
+      "candidate_mentors": [
+        {
+          "mentor_id": "m_a3_040",
+          "current_role": "네이버 백엔드 시니어 엔지니어 7년차",
+          "career_path": "스타트업 → 네이버",
+          "answer_summaries": [
+            "AI 도입 후 개발 문화 변화",
+            "신입 채용 시 AI 역량 평가 방식"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_041",
+          "current_role": "스타트업 풀스택 개발자",
+          "career_path": "부트캠프 → 스타트업",
+          "answer_summaries": [
+            "부트캠프 출신 취업 성공 전략"
+          ]
+        },
+        {
+          "mentor_id": "m_a3_042",
+          "current_role": "카카오 백엔드 엔지니어",
+          "career_path": "대학원 → 카카오",
+          "answer_summaries": [
+            "대기업 개발자 신입 면접 준비"
+          ]
+        }
+      ],
+      "gold": {
+        "top_mentor_id": "m_a3_040",
+        "reason": "대기업 현직 + AI 도입 현장 경험 보유. recency_sensitive 질문에 가장 적합. 신입 채용 기준 expertise 보유"
+      }
+    }
+  ]
+}

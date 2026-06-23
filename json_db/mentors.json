@@ -1,0 +1,1077 @@
+{
+  "schema_name": "mentors",
+  "description": "멘토 기본 정보 DB",
+  "fields": {
+    "mentor_id": "string",
+    "mentor_info": {
+      "name": "string",
+      "gender": "string",
+      "age": "int"
+    },
+    "background": {
+      "school": "string",
+      "major": "string",
+      "grade": "string|null",
+      "status": "string"
+    },
+    "current_role": "string",
+    "years_of_experience": "int",
+    "total_questions": "int",
+    "matching_summary_text": "string",
+    "be_go": "string",
+    "active": "bool",
+    "created_at": "string"
+  },
+  "records": [
+    {
+      "mentor_id": "mr_1b617f90b32b",
+      "mentor_info": {
+        "name": "김현우",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "리서치 애널리스트, ABC 자산운용사",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 서울대 경제학과를 졸업하고 현재 ABC 자산운용사에서 5년차 리서치 애널리스트로 일하고 있는 김현우입니다. 증권사에서의 인턴 경험을 바탕으로 다양한 금융 상품과 시장 분석에 대한 깊은 이해를 갖추고 있습니다. 저는 특히 신흥 시장 분석과 금융 트렌드 예측에서 강점을 가지고 있으며, 멘티들에게 투자의 기초부터 전문적인 시장 분석 방법까지 풍부한 인사이트를 제공할 수 있습니다.",
+      "be_go": "금융/투자 분야에서 경력을 시작하려는 대학생이나 신입사원에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_7052e9d0655c",
+      "mentor_info": {
+        "name": "김혜진",
+        "gender": "여",
+        "age": 31
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "기계공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "IBD 어소시에이트, 외국계 증권사",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 현재 외국계 증권사에서 IBD 어소시에이트로 근무 중인 김혜진입니다. 저는 비상경 계열인 기계공학을 전공했지만, CFA를 취득하고 금융업계로 성공적으로 전환했습니다. 특히, 학문적 배경과 금융 자격증을 활용하여 복잡한 금융 분석을 수행하는 데 강점을 가지고 있습니다. 금융 분야로의 전환을 고려하거나 외국계 기업 진출을 목표로 하는 멘티분들께 실질적인 조언을 드릴 수 있습니다.",
+      "be_go": "금융업계로의 전환을 고민하는 비상경 멘티나 외국계 금융사 취업을 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_992ea90d1079",
+      "mentor_info": {
+        "name": "이준호",
+        "gender": "남",
+        "age": 37
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "CFO, 핀테크 스타트업",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "저는 회계법인 및 대기업 재무 부서에서의 경험을 바탕으로 현재 핀테크 스타트업에서 CFO로 일하고 있습니다. 재무 기획 및 전략 수립에 강점을 가지고 있으며, 빠르게 변화하는 금융 환경에서의 혁신적인 해결책을 제시할 수 있습니다. 다양한 재무 관련 경력을 통해 스타트업의 성장과 안정적인 재무 구조 확립을 돕고자 합니다.",
+      "be_go": "금융 및 회계 분야에서 경력을 쌓고 싶거나, 스타트업에서 재무 관리 및 전략 수립에 대한 실질적인 조언을 원하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_a10dae8fad4e",
+      "mentor_info": {
+        "name": "김민준",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "경제학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "리테일 PB, 국내 대형 증권사",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "김민준 멘토는 국내 대형 증권사에서 6년간 리테일 PB로 근무하며 고객 자산 관리의 전문성을 쌓았습니다. 고려대학교 경제학 전공을 바탕으로 한 깊이 있는 금융 지식을 가지고 있으며, 증권사 공채 출신으로 실질적인 입사 및 경력 개발 경험을 공유할 수 있습니다. 고객 중심의 솔루션을 제공하는 능력을 갖추고, 금융 및 투자 분야 취업, 커리어 개발에 있어 실질적인 조언과 방향성을 제시합니다.",
+      "be_go": "금융 투자 분야에 관심이 있는 멘티와 증권사 입사를 준비하는 대학생들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_e63211feb271",
+      "mentor_info": {
+        "name": "박준형",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "사모펀드 심사역, XYZ자산운용",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 포항공과대학교 산업공학을 전공하고 M&A 자문을 거쳐 현재는 XYZ자산운용에서 사모펀드 심사역으로 일하고 있는 박준형입니다. 7년 이상의 경력을 통해 금융과 투자, 특히 사모펀드 분야에서 깊은 통찰력을 쌓았습니다. 저는 실무와 이론을 아우르는 체계적인 멘토링을 통해 여러분의 커리어 발전에 기여할 수 있습니다. 특히 금융 분야 진출을 꿈꾸는 분들에게 맞춤형 조언을 제공할 자신이 있습니다.",
+      "be_go": "금융 및 투자, 특히 사모펀드 분야에 관심이 있는 멘티에게 적합합니다. 관련 분야에 대한 실무적인 조언과 방향성을 찾는 데 도움을 드릴 수 있습니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_d4e463af6be2",
+      "mentor_info": {
+        "name": "김진수",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "네이버 백엔드 시니어 엔지니어",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "카이스트 컴퓨터공학과를 졸업한 후 스타트업을 거쳐 현재 네이버에서 7년째 백엔드 시니어 엔지니어로 근무 중입니다. 대규모 트래픽 처리와 효율적인 시스템 설계에 전문성을 가지고 있으며, 다양한 프로젝트를 통해 쌓은 실무 경험을 바탕으로 멘티들에게 실질적인 조언을 제공합니다. 특히, 스타트업과 대기업을 모두 경험한 시각으로 멘티들에게 폭넓은 인사이트를 제공할 수 있습니다.",
+      "be_go": "백엔드 개발에 관심이 있는 멘티, 특히 대기업과 스타트업의 차이점을 알고 싶어하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_8426145e8a56",
+      "mentor_info": {
+        "name": "김민수",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "백엔드 엔지니어, 카카오",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 연세대학교 컴퓨터공학과를 졸업하고 카카오에서 5년째 백엔드 엔지니어로 일하고 있는 김민수입니다. 카카오 공채로 입사하여 다양한 프로젝트를 통해 백엔드 시스템의 설계 및 최적화에 대한 깊은 이해를 쌓았습니다. 백엔드 개발의 기초부터 고급 기술까지, 특히 대규모 시스템 아키텍처에 대한 경험을 바탕으로 멘토링을 제공합니다. IT 개발 분야에 대한 열정과 도전 정신을 가진 멘티들을 돕고 싶습니다.",
+      "be_go": "IT 개발에 관심이 많고 백엔드 분야에서 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_d231f9ed17b8",
+      "mentor_info": {
+        "name": "김민준",
+        "gender": "남",
+        "age": 29
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "프론트엔드 엔지니어, 토스",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 한양대학교에서 컴퓨터공학을 전공하고 부트캠프를 통해 실무 역량을 키운 후 스타트업 경험을 거쳐 토스에서 프론트엔드 엔지니어로 일하고 있는 김민준입니다. 프론트엔드 개발의 전반적인 기술 스택에 대한 전문성을 지니고 있으며, 스타트업과 대기업에서의 다양한 프로젝트 경험을 바탕으로 멘토링을 진행하고 있습니다. 특히, 실무에서의 문제 해결 능력과 효율적인 협업 방안에 대해 자세히 조언해 드릴 수 있습니다.",
+      "be_go": "프론트엔드 개발에 관심이 있는 분이나 개발 커리어 전환을 고민 중인 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_0e589fd9d056",
+      "mentor_info": {
+        "name": "박준영",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "소프트웨어 엔지니어, 구글 코리아",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "포스텍 컴퓨터공학과를 졸업하고 삼성에서 첫 커리어를 시작한 후, 현재는 구글 코리아에서 소프트웨어 엔지니어로 일하고 있습니다. 백엔드 개발에 대한 깊은 이해와 외국계 기업의 업무 환경에 대한 풍부한 경험을 갖추고 있습니다. 멘토링에서는 실무 중심의 조언과 국제적 업무 경험을 나누는 데 초점을 맞추고 있습니다.",
+      "be_go": "외국계 기업 취업을 희망하거나 백엔드 개발에 관심이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_cb14c4906be5",
+      "mentor_info": {
+        "name": "김민지",
+        "gender": "여",
+        "age": 31
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 사이언티스트, 쿠팡",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 서울대 통계학과를 졸업하고 스타트업에서 데이터 분석가로 시작하여 현재 쿠팡의 데이터 사이언티스트로 일하고 있는 김민지입니다. 데이터 분석과 AI 분야에서 5년간의 실무 경험을 가지고 있으며, 특히 대용량 데이터 처리와 머신러닝 알고리즘 최적화에 강점을 가지고 있습니다. 다양한 프로젝트를 통해 얻은 실질적인 인사이트를 멘티와 나누고, 이 분야로의 진로를 고민하는 분들에게 실질적인 조언을 드릴 수 있습니다.",
+      "be_go": "데이터 분석 및 AI 분야에 관심이 있으며, 실무 경험과 커리어 발전을 모색하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_b5717398847a",
+      "mentor_info": {
+        "name": "이준혁",
+        "gender": "남",
+        "age": 33
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "AI",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "머신러닝 엔지니어, 카카오",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 카카오에서 머신러닝 엔지니어로 일하고 있는 이준혁입니다. 카이스트에서 AI 전공으로 석사 학위를 취득한 후, 6년 동안 다양한 AI 및 데이터 분석 프로젝트에 참여해 왔습니다. 알고리즘 개발과 데이터 분석을 통한 문제 해결에 강점을 가지고 있으며, 직무 전환이나 경력 개발을 희망하는 멘티들에게 실질적인 조언을 드릴 수 있습니다.",
+      "be_go": "AI 분야에 관심이 있거나, 머신러닝 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_181c39a7c38b",
+      "mentor_info": {
+        "name": "김현준",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "통계",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "데이터 분석 컨설턴트, IT컨설팅 회사",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "저는 고려대학교에서 통계를 전공한 후 비전공 분야로 전환하여 현재 IT컨설팅 회사에서 데이터 분석 컨설턴트로 일하고 있습니다. 4년간 다양한 산업분야의 프로젝트를 통해 실질적이고 효율적인 데이터 분석 솔루션을 제공합니다. 데이터 기반 의사결정과 컨설팅 프로세스에 강점이 있으며, 비전공자도 쉽게 이해할 수 있도록 멘토링합니다. 데이터 분석에 필요한 실무적 스킬과 컨설팅 마인드를 갖춘 전문성을 지니고 있습니다.",
+      "be_go": "데이터 분석 및 컨설팅 분야에 관심이 있는 비전공자 혹은 전환을 고려 중인 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_c5e2f291ffe4",
+      "mentor_info": {
+        "name": "김지연",
+        "gender": "여",
+        "age": 30
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학+통계학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Product Analyst, 외국계 테크기업",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 연세대학교에서 경영학과 통계학을 복수전공한 김지연입니다. 스타트업에서의 경험을 바탕으로 외국계 테크기업에서 5년간 Product Analyst로 일하고 있습니다. 데이터 분석 및 인공지능 기반의 의사결정에 강점을 가지고 있으며, 신중한 데이터 해석을 통해 제품 전략을 제안하는 것을 전문으로 합니다. 멘토링을 통해 실무적 데이터 분석 기술과 경력 전환 전략을 공유하고자 합니다.",
+      "be_go": "데이터 분석이나 AI 분야로 경력을 시작하려는 분들이나 외국계 기업에 진출하고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_061e4be4a25c",
+      "mentor_info": {
+        "name": "김지연",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 나이키코리아",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 이화여자대학교 경영학과를 졸업하고 광고 대행사에서 경력을 시작하여 현재 나이키코리아에서 6년째 브랜드 마케터로 활동하고 있습니다. 대행사에서의 경험을 통해 얻은 다양한 마케팅 전략을 나이키에 적용하며, 브랜드 이미지 강화 및 고객과의 소통을 중시합니다. 멘토링에서는 실무 경험을 바탕으로 한 맞춤형 전략 제시와 브랜드 가치를 높이는 방법에 초점을 맞추고 있습니다.",
+      "be_go": "브랜드 마케팅에 관심이 있는 대학생이나 커리어 전환을 고려하는 경력자에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_9cc0120eed70",
+      "mentor_info": {
+        "name": "김민지",
+        "gender": "여",
+        "age": 30
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "생활디자인",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "브랜드 마케터, 아모레퍼시픽",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "저는 아모레퍼시픽에서 5년간 브랜드 마케터로 재직하며 다양한 뷰티 브랜드의 마케팅 전략을 주도해왔습니다. 연세대학교에서 생활디자인을 전공하며 창의적 문제 해결 능력을 키웠고, 현재는 소비자와 브랜드 간의 소통을 극대화하는 데 초점을 맞추고 있습니다. 제 멘토링 강점은 실무 경험을 바탕으로 한 실질적인 조언과 빠르게 변화하는 시장 트렌드를 반영한 전략적 접근입니다.",
+      "be_go": "브랜드 마케팅 분야에 관심이 있거나 뷰티 산업에 진출하고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_396bc2f17c9e",
+      "mentor_info": {
+        "name": "이서진",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "경영",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "스타트업 그로스 마케터",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "저는 고려대학교 경영학과를 졸업하고 4년간 퍼포먼스 마케팅 분야에서 경험을 쌓아온 전문가입니다. 현재 스타트업에서 그로스 마케터로서 혁신적인 마케팅 전략을 수립하고 실행하며, 성과와 데이터 기반의 의사결정을 중시합니다. 스스로 마케팅 캠페인을 디자인하고 최적화하며, 다양한 도구와 채널을 사용하는 데 능숙합니다. 멘토링 과정에서는 실무 중심의 조언과 시장 트렌드에 대한 깊이 있는 통찰을 제공할 수 있습니다.",
+      "be_go": "퍼포먼스 마케팅 분야에서 커리어를 시작하거나 실무 경험을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_ccdb8cc6796f",
+      "mentor_info": {
+        "name": "김민정",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "의류학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "MD, 무신사",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 서울대학교 의류학과를 졸업하고 무신사에서 5년간 MD로 근무하고 있는 김민정입니다. 패션 MD 분야에서의 깊은 이해와 실질적인 경험을 바탕으로, 시장 분석 및 유통 전략 수립에 강점을 가지고 있습니다. 멘토링을 통해 패션 산업에서의 커리어 발전을 도모하고자 하는 멘티들에게 실질적인 조언과 인사이트를 제공할 수 있습니다.",
+      "be_go": "패션 MD 분야에 관심이 있고 실질적인 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:39"
+    },
+    {
+      "mentor_id": "mr_b71e8c9627f8",
+      "mentor_info": {
+        "name": "김지은",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "글로벌 FMCG 마케팅 매니저, 글로벌 소비재 회사",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "김지은 멘토는 글로벌 소비재 기업에서 7년간 마케팅 매니저로 활동하며 다수의 성공적인 브랜드 캠페인을 이끌어왔습니다. 그녀는 한양대에서 경영학을 전공하고, 외국계 소비재 기업에서 경력을 쌓으며 글로벌 시장을 대상으로 한 마케팅 전략 개발에 전문성을 갖추었습니다. 멘토링에서는 실질적인 마케팅 현장 경험과 글로벌 관점을 제공합니다. 또한, 멘티의 성장과 목표 달성을 위한 체계적인 피드백을 받을 수 있습니다.",
+      "be_go": "국내외 브랜드 마케팅 분야로 진출하고자 하는 멘티들에게 특히 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_dd28ef20b5a4",
+      "mentor_info": {
+        "name": "김민준",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "성균관대학교",
+        "major": "경영",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이커머스 퍼포먼스 마케팅 팀장, ABC전자",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 성균관대 경영학과를 졸업하고 6년간 이커머스 분야에서 퍼포먼스 마케팅을 전문으로 해왔습니다. 현재 ABC전자에서 팀장으로서 데이터 분석과 전략적 캠페인을 통한 실무 경험이 풍부합니다. 제 멘토링의 강점은 실질적인 문제 해결과 최신 트렌드에 기반한 성과 향상 방법을 제시하는 것입니다.",
+      "be_go": "이커머스 및 퍼포먼스 마케팅 분야에 관심이 있는 멘티에게 적합합니다. 커리어 초반의 방향성을 잡고자 하는 분들께 특히 도움이 될 것입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_7e8b3bd16bed",
+      "mentor_info": {
+        "name": "김민지",
+        "gender": "여",
+        "age": 29
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "이커머스 MD, SSG닷컴",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 연세대학교 경영학과를 졸업하고 SSG닷컴에서 4년째 이커머스 MD로 근무 중인 김민지입니다. 주요 업무는 상품 기획과 트렌드 분석이며, 이커머스 분야의 최신 동향을 누구보다 빠르게 파악하고 있습니다. 제가 가진 이커머스 MD 경력을 바탕으로 멘티분들에게 실질적인 조언과 가이드를 제공할 수 있습니다.",
+      "be_go": "이커머스 분야에 관심이 있거나 MD 직무를 목표로 하고 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_c6a43440a683",
+      "mentor_info": {
+        "name": "이수현",
+        "gender": "여",
+        "age": 36
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "전략기획 파트장, 삼성전자",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "서울대학교 경영학과를 졸업하고 삼성전자에 공채로 입사하여 9년간 전략기획 업무를 해온 전문가입니다. 현재는 삼성전자에서 전략기획 파트장으로 활동하며, 다양한 프로젝트의 기획과 실행을 주도하고 있습니다. 전략적 사고와 문제 해결 능력을 바탕으로 복잡한 비즈니스 문제를 해결해 왔습니다. 멘토링을 통해 취업 준비생과 초기 커리어 직장인들에게 전략기획 분야의 인사이트와 실제 사례를 공유하는 데 강점을 가지고 있습니다.",
+      "be_go": "전략기획 분야에 관심이 있거나 커리어 전환을 고려하는 이들에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_fef008877289",
+      "mentor_info": {
+        "name": "김도영",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "컨설턴트, 맥킨지 & 컴퍼니",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 맥킨지에서 5년간 컨설턴트로 일하고 있는 김도영입니다. 카이스트에서 산업공학을 전공하고 MBB 컨설팅에서 경력을 쌓아왔습니다. 다양한 프로젝트를 통해 전략 수립 및 문제 해결에 대한 깊은 경험을 보유하고 있습니다. 멘티 여러분들에게 컨설팅 입문과 커리어 발전에 대한 실질적인 조언을 제공할 수 있습니다.",
+      "be_go": "컨설팅 분야에 관심 있는 학부생이나 커리어 전환을 고려하는 직장인에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_af6f9dab7b69",
+      "mentor_info": {
+        "name": "김지훈",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "COO, ABC 스타트업",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "김지훈 멘토는 연세대학교 경영학과를 졸업하고 대기업에서 기획 업무를 경험한 후, 현재는 스타트업의 COO로 활동하고 있습니다. 전략기획 분야에서의 탄탄한 경력을 바탕으로 스타트업의 전반적인 운영과 성장을 이끌고 있습니다. 멘토링에서는 기획력 향상과 스타트업 환경에서의 실질적인 전략 수립 방법을 중점적으로 지도합니다.",
+      "be_go": "전략기획에 관심이 있거나 스타트업에서 경험을 쌓고자 하는 멘티들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_f19c2d5ddaf4",
+      "mentor_info": {
+        "name": "김현수",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "딜로이트 전략 컨설턴트",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 고려대학교 경영학과를 졸업하고 현재 딜로이트에서 전략 컨설턴트로 일하고 있는 김현수입니다. Big4 컨설팅 회사에서의 풍부한 경험을 바탕으로 다양한 산업군의 전략 수립과 실행을 주도해 왔습니다. 제 전문성은 시장 분석 및 성장 전략 개발에 있으며, 새로운 도전을 두려워하지 않는 멘티들에게 실질적인 도움을 드리고 싶습니다.",
+      "be_go": "컨설팅 분야에 관심이 있거나, 전략 수립과 성장 전략 개발에 대해 깊이 있는 지식을 얻고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_25bb518b5386",
+      "mentor_info": {
+        "name": "김민수",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "포스텍",
+        "major": "화학공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "사업전략팀 과장, LG화학",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 포스텍 화학공학과를 졸업하고 초기에 영업 분야에서 경험을 쌓은 후 전략기획 분야로 전환하여 현재 LG화학 사업전략팀에서 과장으로 근무 중인 김민수입니다. 영업에서 전략기획으로의 경력 전환을 통해 다양한 산업의 이해와 데이터 기반 전략 수립 능력을 키웠습니다. 복잡한 문제를 분석하고 창의적인 해결책을 제시하는 데 특화되어 있으며, 실질적인 경험을 바탕으로 멘티들에게 구체적인 조언을 제공할 수 있습니다.",
+      "be_go": "영업에서 전략기획으로의 경력 전환을 고려하는 멘티 또는 화학공학을 바탕으로 전략기획 직무에서의 성장을 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_a296da0c4e71",
+      "mentor_info": {
+        "name": "김윤정",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "교육학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HRD 매니저, 카카오",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "김윤정 멘토는 이화여대에서 교육학을 전공하고 HRD 분야에서 6년의 경험을 쌓은 전문가입니다. 카카오에서의 풍부한 실무 경험을 통해 HR 개발 및 업무 최적화에 대한 깊은 통찰력을 가지고 있습니다. 멘토링에서는 실제 사례 중심의 실질적인 조언을 통해 멘티가 직무 적응 및 성장을 할 수 있도록 돕습니다.",
+      "be_go": "HRD 분야에 관심이 있거나 인사 직무를 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_d732281fd6da",
+      "mentor_info": {
+        "name": "김지영",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "서울대",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "채용팀 과장, 삼성물산",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 서울대학교 심리학과를 졸업하고 현재 삼성물산 채용팀에서 과장으로 근무하고 있습니다. 7년간 대기업 채용 분야에서의 경험을 바탕으로 다양한 인재를 발굴하고 육성하는 데 전문성이 있습니다. 심리학적 관점에서 접근하는 채용 과정과 면접 기법에서 강점을 가지고 있으며, 구직자들이 효과적인 자기 소개서를 작성하고 인터뷰에서 자신을 잘 표현할 수 있도록 돕고자 합니다.",
+      "be_go": "대기업 인사/채용 분야에 관심이 있는 멘티에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_20a126ed5024",
+      "mentor_info": {
+        "name": "김은영",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "People Ops 리드, 스타트업 XYZ Corp",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 연세대학교 경영학과를 졸업하고 현재 스타트업에서 People Ops 리드로 근무 중인 김은영입니다. 지난 5년간 다양한 HR 프로젝트를 주도하며 조직문화와 인재 개발에 중점을 두고 일해왔습니다. 스타트업 특유의 빠른 환경 변화에 적응하면서 인사 전략을 조율하는 데 강점을 가지고 있습니다. HR 경력 초기 단계에 있는 분들에게 실무적인 조언과 인사이트를 제공할 수 있습니다.",
+      "be_go": "스타트업 HR 분야에 관심이 있거나 경력을 시작하고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_61487649c06a",
+      "mentor_info": {
+        "name": "김지연",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HRBP 매니저, 외국계 기업",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 이화여자대학교 경영학과를 졸업하고 외국계 기업에서 HRBP로 8년의 경력을 쌓아온 김지연입니다. HRBP로서 인사기획 및 조직 변화 관리에 전문성을 가지고 있으며, 외국계 기업에서의 경험을 통해 글로벌 HR 트렌드에도 익숙합니다. 경력 개발과 직무 변경에 관심 있는 분들에게 실질적인 조언을 제공하는 것을 목표로 하고 있습니다.",
+      "be_go": "외국계 기업에서 HR 커리어를 시작하거나 발전시키고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_2856878ebb41",
+      "mentor_info": {
+        "name": "김현지",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "CPO, HR테크 스타트업 (회사명 불명)",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 HR테크 분야에서 7년간 경력을 쌓아온 김현지입니다. 서울대학교에서 산업공학을 전공하였고, HRTech와 People Analytics에 강점을 가지고 있습니다. 현재 HR테크 스타트업에서 CPO로 근무하며 인사 전략 및 기술혁신을 주도하고 있습니다. 인사데이터를 활용한 문제 해결과 스타트업에서의 실무 경험을 나누고자 하는 멘토링에 강점을 가지고 있습니다.",
+      "be_go": "HRTech와 People Analytics에 관심이 있는 취업 준비생이나 초기 경력자로, 스타트업 환경에서의 인사 기술 혁신을 배우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_84bda007124e",
+      "mentor_info": {
+        "name": "이정민",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "카이스트",
+        "major": "화학공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "배터리 소재 연구원, 삼성SDI",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 카이스트에서 화학공학을 전공하고 삼성SDI에서 6년간 배터리 소재 연구원으로 근무하고 있습니다. R&D 분야에서 실질적인 성과를 창출하며, 최신 배터리 기술을 연구하는 경험을 쌓았습니다. 특히, 배터리 소재 분야에서의 전문성을 바탕으로 실무 경험과 연구개발 과정을 멘티들과 공유할 수 있습니다. 멘토링을 통해 후배 연구원들이 커리어를 발전시키는 데 도움을 주고자 합니다.",
+      "be_go": "화학공학 및 배터리 소재 R&D 분야에서 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_adcc583ec717",
+      "mentor_info": {
+        "name": "김진우",
+        "gender": "남",
+        "age": 37
+      },
+      "background": {
+        "school": "한양대학교",
+        "major": "기계공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "생산관리 차장, 현대자동차",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "저는 한양대학교에서 기계공학을 전공하고 현재 현대자동차에서 10년째 생산관리 차장으로 근무하고 있습니다. 생산 및 품질 관리, 공급망 관리(SCM) 분야에서의 풍부한 경험을 바탕으로, 실무에 바로 적용 가능한 전략과 노하우를 제공할 수 있습니다. 특히 제조업의 품질 개선과 효율성 증대에 대한 전문성을 가지고 있으며, 체계적인 문제 해결 능력을 갖춘 멘토로서 멘티의 성장을 지원합니다.",
+      "be_go": "생산 및 품질 관리 분야에 관심이 있는 멘티나 제조업에서 경력을 쌓고자 하는 사람들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_ecde4778781b",
+      "mentor_info": {
+        "name": "김현주",
+        "gender": "여",
+        "age": 37
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "화학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "선임연구원, LG화학 제약연구소",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 연세대학교에서 화학 박사 학위를 취득한 후, 7년간 LG화학 제약연구소에서 선임연구원으로 일하고 있습니다. 제약 R&D 분야에서의 풍부한 경험을 바탕으로 연구개발 프로세스와 혁신적인 솔루션 제공에 전문성을 가지고 있습니다. 멘토링에 있어서 저는 연구개발 과정에서의 문제 해결과 경력 설계에 대한 조언을 제공하는데 강점을 가지고 있습니다.",
+      "be_go": "제약 연구개발 직무에 관심이 있는 멘티에게 적합합니다. 연구개발 과정과 제약 산업의 실제 업무에 대해 깊이 있는 이해를 얻고자 하는 분들에게 유익할 것입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_2812aeea41ac",
+      "mentor_info": {
+        "name": "김지훈",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "성균관대",
+        "major": "산업공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "SCM 매니저, 외국계 소비재 회사",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "김지훈 멘토는 성균관대 산업공학을 졸업하고 품질 관리 분야에서 경력을 시작하여 현재는 외국계 소비재 회사에서 SCM 매니저로 일하고 있습니다. 그는 품질 관리에서 SCM으로의 성공적인 경력 전환 경험을 보유하고 있으며, 글로벌 소비재 시장에서의 공급망 관리에 대한 깊이 있는 이해를 가지고 있습니다. SCM 및 품질 관리에 대한 전략적 관점과 실무 경험을 바탕으로 멘티들에게 실질적인 조언과 지원을 제공할 수 있습니다.",
+      "be_go": "품질 관리에서 SCM으로 전환을 희망하거나 외국계 기업의 SCM 분야에 관심이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_fdbc38499a6e",
+      "mentor_info": {
+        "name": "정민우",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "POSTECH",
+        "major": "전자공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "반도체 팹 공정 엔지니어, 삼성전자",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "저는 POSTECH 전자공학과를 졸업하고 5년간 삼성전자에서 반도체 팹 공정 엔지니어로 일하고 있습니다. 반도체 공정에 대한 깊고 폭넓은 이해를 바탕으로 실무에서의 문제 해결과 프로세스 최적화를 수행해왔습니다. 멘토링을 통해 반도체 산업에 입문하고자 하는 분들께 공정의 핵심적인 요소와 직무에 필요한 역량을 전달할 수 있습니다. 효율적인 커뮤니케이션과 실질적인 조언을 통해 멘티의 구체적인 커리어 목표 달성을 지원합니다.",
+      "be_go": "반도체 산업에 관심이 있고, 특히 공정 엔지니어로서의 길을 고민하고 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_d942c08a163b",
+      "mentor_info": {
+        "name": "김민정",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "홍익대학교",
+        "major": "시각디자인",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Product Designer, 카카오",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 홍익대학교 시각디자인 전공자로, 현재 카카오에서 5년째 Product Designer로 근무 중인 김민정입니다. UX로의 성공적인 전환 경험을 바탕으로, UI/UX 디자인 분야에서의 실질적인 전략과 스킬을 멘티들에게 전수하고자 합니다. 경력 초기부터 다양한 프로젝트에 참여하며 쌓은 전문성과 실무 경험은 멘티들이 디자인 커리어를 발전시키는 데 큰 도움이 될 것입니다.",
+      "be_go": "UI/UX 분야로의 성공적인 전환을 희망하거나, 디자인 경력을 쌓고자 하는 멘티에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:40"
+    },
+    {
+      "mentor_id": "mr_1daa92ca101f",
+      "mentor_info": {
+        "name": "김현정",
+        "gender": "여",
+        "age": 30
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "심리학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "UX 리서처, 토스",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 심리학을 전공하고 현재 토스에서 UX 리서처로 일하고 있는 김현정입니다. 사용자 경험 연구와 심리학적 분석을 결합하여 제품의 사용성을 높이는 데 집중하고 있습니다. UX 리서치에 대한 깊은 이해와 실무 경험을 바탕으로 멘티들에게 실질적인 조언과 인사이트를 제공하고자 합니다. 특히 UX 연구방법론과 사용자 중심 디자인에 대해 함께 고민하고 발전할 수 있는 멘토링을 지향합니다.",
+      "be_go": "UX/UI 디자인과 리서치에 관심이 있거나 심리학적 접근을 UX에 통합하고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_5072e2690ed4",
+      "mentor_info": {
+        "name": "김하은",
+        "gender": "여",
+        "age": 32
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "디자인",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Senior UX Designer, 외국계 테크기업",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 이화여대에서 디자인을 전공하고 현재 외국계 테크기업에서 7년째 UX 디자이너로 일하고 있는 김하은입니다. 그래픽 디자인으로 시작하여 제품 디자인으로 전환했으며, 사용자 경험을 개선하는 데 열정을 가지고 있습니다. 멘토로서 실무에서 얻은 노하우와 포트폴리오 구성 팁을 공유해 드릴 수 있습니다. 또한, 외국계 기업의 문화와 프로세스에 대해서도 깊이 있는 조언을 드릴 수 있습니다.",
+      "be_go": "외국계 기업 진출을 목표로 하거나 UX/UI 디자인 경력을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_e023bd735e08",
+      "mentor_info": {
+        "name": "김지영",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "산업디자인",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "Head of Design, 스타트업",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 서울대학교 산업디자인과를 졸업하고 6년간 UX/UI 디자인 분야에서 경험을 쌓아온 전문가입니다. 현재는 스타트업에서 Head of Design으로 재직 중이며, 팀을 이끌고 UX/UI 디자인 전반을 리드하고 있습니다. 디자인 프로세스 구축과 팀워크를 중시하며, 창의적인 문제 해결을 통해 사용자 경험을 개선하는 데 주력하고 있습니다. 멘토링에서는 실무 경험을 바탕으로 한 현실적인 조언과 피드백을 제공하며, 디자인 커리어 및 프로젝트 관리에 대한 방향성을 제시하는 데 강점이 있습니다.",
+      "be_go": "UX/UI 디자인 분야에 관심이 있거나 커리어 전환을 고민 중인 멘티들에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_2ab2d0b0550f",
+      "mentor_info": {
+        "name": "김민수",
+        "gender": "남",
+        "age": 30
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "행정학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "기획팀 대리, 한국전력",
+      "years_of_experience": 4,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 한국전력 기획팀에서 4년째 근무 중인 김민수입니다. 고려대 행정학과를 졸업하고 공기업 공채에 성공한 경험을 바탕으로 취업 준비생들에게 실질적인 조언을 드리고자 합니다. 공기업의 다양한 채용 프로세스와 준비 팁을 나누며, 특히 기획 직무에 관심 있는 멘티들에게 큰 도움이 될 것입니다. 면접 준비와 조직 내 커리어 발전에 대한 조언을 통해 멘티들이 목표를 달성할 수 있도록 돕습니다.",
+      "be_go": "공기업 취업을 목표로 하거나 행정학을 전공으로 기획 관련 직무에 관심 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_113d62b6b819",
+      "mentor_info": {
+        "name": "박지훈",
+        "gender": "남",
+        "age": 36
+      },
+      "background": {
+        "school": "한국외국어대학교",
+        "major": "무역학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "무역전문가, 대한무역투자진흥공사",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "저는 한국외국어대학교 무역학과를 졸업하고 대한무역투자진흥공사에서 8년간 무역전문가로 일하고 있습니다. 다양한 무역 및 물류 프로젝트를 성공적으로 이끌어 오며, 국제 무역의 복잡성을 깊이 이해하고 있습니다. 특히 신흥 시장 진출 전략과 효율적인 물류 관리에 강점이 있습니다. 멘티들에게 무역 실무와 전략적 사고를 키울 수 있도록 돕겠습니다.",
+      "be_go": "국제 무역 분야에 진출하고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_103c6e09c511",
+      "mentor_info": {
+        "name": "김민지",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "CMO, 시리즈B 스타트업",
+      "years_of_experience": 7,
+      "total_questions": 0,
+      "matching_summary_text": "저는 연세대학교에서 경영학을 전공한 후 대기업에서 경력을 쌓고, 창업에 도전하여 현재 시리즈B 단계의 스타트업에서 CMO로 일하고 있습니다. 스타트업의 성장과정에 대한 깊은 이해와 마케팅 전략 수립 경험이 풍부하며, 창업 초기의 어려움을 겪는 멘티들에게 실질적인 조언을 제공할 수 있습니다. 특히, 마케팅과 비즈니스 개발에 대한 멘토링이 가능합니다.",
+      "be_go": "창업을 준비 중이거나 마케팅에 대한 깊이 있는 조언이 필요한 스타트업 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_e364ef415aad",
+      "mentor_info": {
+        "name": "김지영",
+        "gender": "여",
+        "age": 35
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "언론정보학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "홍보팀 차장, 대기업 홍보팀",
+      "years_of_experience": 9,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 서울대학교에서 언론정보학을 전공하고 언론사를 거쳐 현재 대기업 홍보팀 차장으로 일하고 있는 김지영입니다. 9년간 홍보 및 PR 분야에서 쌓아온 경험을 바탕으로 다양한 홍보 전략과 위기 관리에 대한 깊은 통찰력을 가지고 있습니다. 특히, 대규모 프로젝트 관리와 관련된 노하우를 전수할 수 있습니다. 멘토링을 통해 홍보 업계에 진입하고자 하는 멘티들에게 실질적인 조언과 방향성을 제공하겠습니다.",
+      "be_go": "홍보/PR 업계에 관심이 있으며, 실무 경험을 쌓고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_af6ba441589e",
+      "mentor_info": {
+        "name": "이준혁",
+        "gender": "남",
+        "age": 32
+      },
+      "background": {
+        "school": "한국과학기술원(KAIST)",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "벤처캐피탈 심사역, ABC벤처캐피탈",
+      "years_of_experience": 5,
+      "total_questions": 0,
+      "matching_summary_text": "저는 KAIST에서 경영학을 전공한 후 스타트업에서의 경험을 바탕으로 현재 벤처캐피탈 심사역으로 일하고 있습니다. 5년간의 VC 경력을 통해 다양한 산업의 스타트업을 평가하고 투자 결정을 내리는 역량을 갖추었습니다. 특히, 초기 투자와 기업 성장 전략에 대한 깊은 이해와 경험을 보유하고 있어 이 분야에 발을 들이려는 분들께 실질적인 조언을 드릴 수 있습니다.",
+      "be_go": "벤처캐피탈 및 스타트업에 관심이 있거나 투자 업계 진입을 목표로 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_0dd8f2accb72",
+      "mentor_info": {
+        "name": "김현수",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "인공지능",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "네이버 AI 리서처",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 서울대학교에서 AI 박사 학위를 받은 김현수입니다. 현재 네이버에서 AI 리서처로 근무하며, 6년 이상의 경력을 쌓았습니다. 특히 대형 언어 모델(LLM) 연구에 강점이 있으며, 데이터 분석 및 AI 모델 개발에 전문성을 가지고 있습니다. 멘티분들에게 실질적인 조언과 AI 연구 및 개발에 대한 인사이트를 제공할 수 있을 것입니다.",
+      "be_go": "데이터 분석 및 AI 연구에 관심이 있으며, 실무 경험과 이론적 지식을 함께 배우고자 하는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_3e1061b05dfa",
+      "mentor_info": {
+        "name": "김진우",
+        "gender": "남",
+        "age": 35
+      },
+      "background": {
+        "school": "포항공과대학교",
+        "major": "컴퓨터공학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "테크 리드, 쿠팡",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "안녕하세요, 저는 포항공과대학교 컴퓨터공학과를 졸업하고 현재 쿠팡에서 테크 리드로 근무하고 있는 김진우입니다. 제 전문 분야는 대규모 분산 시스템 설계 및 개발이며, 8년간의 경력을 통해 다양한 프로젝트를 성공적으로 이끌어왔습니다. 저의 멘토링은 실무 중심의 조언과 커리어 성장을 돕는 방향으로 진행됩니다. 백엔드 개발 경로를 구체화하고자 하는 분들에게 실질적인 도움이 될 수 있습니다.",
+      "be_go": "백엔드 개발에 대한 깊이 있는 이해와 실무 경험을 얻고 싶은 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_cf9fd66333f6",
+      "mentor_info": {
+        "name": "김지영",
+        "gender": "여",
+        "age": 34
+      },
+      "background": {
+        "school": "이화여자대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "마케팅 디렉터, 스타트업 XYZ",
+      "years_of_experience": 8,
+      "total_questions": 0,
+      "matching_summary_text": "스타트업 환경에서 8년 이상 브랜드 마케팅 전문가로 활동하고 있는 김지영입니다. 이화여대 경영학과를 졸업하고 스타트업 브랜딩과 바이럴 마케팅에 집중해왔습니다. 빠르게 변화하는 시장에서의 창의적 전략 수립과 실행에 강점을 가지고 있습니다. 멘티들에게 실질적인 조언과 스타트업에서의 성장 비결을 전수하는 것을 목표로 합니다.",
+      "be_go": "스타트업 브랜딩과 마케팅 전략에 관심이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_c7fe04646fb2",
+      "mentor_info": {
+        "name": "김진우",
+        "gender": "남",
+        "age": 34
+      },
+      "background": {
+        "school": "연세대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "BizDev 매니저, 글로벌 테크기업",
+      "years_of_experience": 6,
+      "total_questions": 0,
+      "matching_summary_text": "저는 글로벌 테크기업에서 6년간 BizDev 매니저로 근무하며, 전략기획과 사업개발 분야에서 성과를 쌓아왔습니다. 연세대학교에서 경영학을 전공하며 전략적 사고를 배양했고, 다양한 글로벌 프로젝트를 성공적으로 이끌었습니다. 멘토링을 통해 경영학 및 전략기획에 관심 있는 분들에게 실무적 조언과 글로벌 비즈니스 통찰력을 제공할 수 있습니다.",
+      "be_go": "전략기획과 글로벌 사업개발에 관심이 있는 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_ec60b8576b3e",
+      "mentor_info": {
+        "name": "김현우",
+        "gender": "남",
+        "age": 40
+      },
+      "background": {
+        "school": "서울대학교",
+        "major": "경영학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "부티크 컨설팅 파트너",
+      "years_of_experience": 12,
+      "total_questions": 0,
+      "matching_summary_text": "저는 서울대학교 경영학과를 졸업하고 MBB에서 경력을 쌓은 후, 현재는 부티크 컨설팅 회사를 창업하여 파트너로 활동하고 있습니다. 12년간의 컨설팅 경력을 통해 다양한 산업과 분야에서 기업의 문제를 해결해왔습니다. 특히 창업 및 경영 전략 수립에 강점을 가지고 있으며, 멘티가 실제로 시장에서 성공할 수 있도록 실질적인 조언을 제공합니다.",
+      "be_go": "컨설팅 분야에 관심이 있거나 창업을 희망하는 멘티에게 적합한 멘토입니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    },
+    {
+      "mentor_id": "mr_aab245579119",
+      "mentor_info": {
+        "name": "김현수",
+        "gender": "남",
+        "age": 37
+      },
+      "background": {
+        "school": "고려대학교",
+        "major": "법학",
+        "grade": null,
+        "status": "직장인"
+      },
+      "current_role": "HR팀장 겸 공인노무사, 대기업",
+      "years_of_experience": 10,
+      "total_questions": 0,
+      "matching_summary_text": "저는 고려대학교 법학과를 졸업하고 공인노무사 자격증을 취득한 후 10년간 대기업에서 HR팀장으로 근무하고 있습니다. 인사 관리 및 노동 법률 분야에서의 깊은 이해를 바탕으로 조직 내 인적 자원 개발과 법률적 문제 해결을 전문으로 하고 있습니다. 강력한 리더십과 소통 능력을 통해 팀의 성과를 극대화하고 있으며, 직무 경험을 바탕으로 멘티들에게 실질적인 조언과 방향성을 제시하는 데 강점을 가지고 있습니다.",
+      "be_go": "HR 분야 진로를 고민하는 멘티나 노무사 자격증 취득 후 직장 생활에 대한 조언이 필요한 멘티에게 적합합니다.",
+      "active": true,
+      "created_at": "2026-06-23 15:41"
+    }
+  ]
+}

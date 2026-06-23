@@ -1,0 +1,209 @@
+{
+  "description": "End-to-End 전체 파이프라인 평가셋 — 5개 케이스 (Agent 1→2→3→4 흐름 검증)",
+  "evaluation_focus": [
+    "A1 구조화 → A2 verdict 일치",
+    "A2 verdict → A3 호출 여부 일치",
+    "A3 멘토 top1 → A4 asset_tags 포함 여부",
+    "pipeline_field_consistency (session_id, question_units, taxonomy_tags 전달 정확성)"
+  ],
+  "cases": [
+    {
+      "case_id": "E2E_001",
+      "source": "CASE_001",
+      "label": "금융 서류전략 복합질문",
+      "input_question": "자산운용사 운용역 지망. CFA L1, 학회 팀장. 인턴 없음. 서류 반복 탈락. 자소서 전략, 커피챗 준비법, 커리어 로드맵 질문.",
+      "expected_flow": {
+        "agent1": {
+          "current_bottleneck": "서류전략_자소서",
+          "source_role": "학생(CFA L1)",
+          "target_role": "자산운용사 운용역",
+          "question_structure": "multi_part_same_goal",
+          "search_strategy_hint": "mentor_first",
+          "recency_sensitive": false,
+          "requires_artifact_review": false
+        },
+        "agent2": {
+          "expected_verdict": [
+            "mentor_needed",
+            "partial_with_mentor_suggest"
+          ],
+          "reason": "개인 자소서 진단은 현직자 필요"
+        },
+        "agent3": {
+          "mentor_should_have": [
+            "자산운용사 현직",
+            "서류 전략 경험",
+            "학회/CFA 기반 입사 경험"
+          ]
+        },
+        "agent4": {
+          "asset_tags_should_include": [
+            "서류전략",
+            "금융/투자",
+            "인턴경험_부족"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "E2E_002",
+      "source": "CASE_002",
+      "label": "AI 시대 백엔드 개발자 전망",
+      "input_question": "컴공 3학년. 생성형 AI가 백엔드 코드를 대체하는 시대. 신입 채용 기준 변화, AI 협업 엔지니어 역할, 학부 준비 역량 질문.",
+      "expected_flow": {
+        "agent1": {
+          "current_bottleneck": "직무전망_불확실성",
+          "source_role": "컴공 학부생",
+          "target_role": "백엔드 개발자",
+          "question_structure": "multi_part_same_goal",
+          "search_strategy_hint": "rag_first",
+          "recency_sensitive": true,
+          "recency_level": "high",
+          "requires_artifact_review": false
+        },
+        "agent2": {
+          "expected_verdict": [
+            "llm_direct",
+            "partial_with_mentor_suggest"
+          ],
+          "reason": "최신 트렌드 질문은 RAG로 부분 커버 가능. 멘토 보완 권장"
+        },
+        "agent3": {
+          "mentor_should_have": [
+            "대기업 IT 현직 개발자",
+            "AI 도입 현장 경험",
+            "신입 채용 기준 인지"
+          ]
+        },
+        "agent4": {
+          "asset_tags_should_include": [
+            "최신전망",
+            "IT개발/데이터",
+            "직무전망_불확실"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "E2E_003",
+      "source": "CASE_004",
+      "label": "SCM → PM/PO 직무전환",
+      "input_question": "외국계 제조업 SCM 3년차. PM/PO로 커리어 피봇 결심. SCM 경험이 기획과 접점 있는지, 어떻게 어필할지 모름.",
+      "expected_flow": {
+        "agent1": {
+          "current_bottleneck": "기존경력_재해석",
+          "source_role": "SCM 담당자",
+          "target_role": "PM/PO",
+          "bridge_hypothesis": "SCM 일정관리·이해관계자 조율 경험이 PM 로드맵 관리와 연결됨",
+          "question_structure": "multi_part_same_goal",
+          "search_strategy_hint": "mentor_first",
+          "recency_sensitive": false,
+          "requires_artifact_review": false
+        },
+        "agent2": {
+          "expected_verdict": [
+            "partial_with_mentor_suggest",
+            "mentor_needed"
+          ],
+          "reason": "SCM→PM 브릿지 일반 가이드는 부분 커버. 개인 맥락 어필은 현직자 필요"
+        },
+        "agent3": {
+          "mentor_should_have": [
+            "직무전환 경험 (운영→기획)",
+            "PM/PO 현직",
+            "SCM 이해"
+          ]
+        },
+        "agent4": {
+          "asset_tags_should_include": [
+            "직무전환",
+            "기존경력_재해석",
+            "SCM",
+            "PM"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "E2E_004",
+      "source": "CASE_005",
+      "label": "바이오 QC 기술전이 이직",
+      "input_question": "바이오 의약품 QC 3년차(세포치료제, 무균시험·PCR). 제약업계 내 이직·직무 확장 가능 여부, 역량 이식 가능성 질문.",
+      "expected_flow": {
+        "agent1": {
+          "current_bottleneck": "보유기술_전이가능성_판단",
+          "source_role": "바이오 의약품 QC",
+          "target_role": "",
+          "bridge_hypothesis": "세포치료제 QC 시험법이 CRO·대형 제약사 QA에 직접 이식 가능",
+          "transferable_skills": [
+            "무균시험법",
+            "PCR",
+            "GMP"
+          ],
+          "question_structure": "multi_part_same_goal",
+          "search_strategy_hint": "mentor_first",
+          "recency_sensitive": false,
+          "requires_artifact_review": false
+        },
+        "agent2": {
+          "expected_verdict": [
+            "mentor_needed"
+          ],
+          "reason": "특화 시험법 역량의 시장 가치 판단은 제약 현직자만 정확히 가능"
+        },
+        "agent3": {
+          "mentor_should_have": [
+            "제약/바이오 QC·QA 현직",
+            "PCR·GMP 경험",
+            "이직 성공 경험"
+          ]
+        },
+        "agent4": {
+          "asset_tags_should_include": [
+            "기술전이_가능성",
+            "보유기술_전이가능성_판단",
+            "연구개발/R&D"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "E2E_005",
+      "source": "CASE_016",
+      "label": "데이터 엔지니어링 포트폴리오 검토",
+      "input_question": "데이터 엔지니어링 취준생. Spark·Hadoop 포트폴리오 첨부. 직무 적합성 피드백, DE vs DA 방향, 클라우드·자격증 우선순위 질문.",
+      "expected_flow": {
+        "agent1": {
+          "current_bottleneck": "포트폴리오_수준_불확실",
+          "source_role": "",
+          "target_role": "데이터 엔지니어",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "actual_document_review",
+          "search_strategy_hint": "mentor_first",
+          "recency_sensitive": false,
+          "requires_artifact_review": true
+        },
+        "agent2": {
+          "expected_verdict": [
+            "mentor_needed"
+          ],
+          "reason": "실제 포트폴리오 첨부 → 문서 검토 없이 AI 판단 불가. requires_artifact_review=True"
+        },
+        "agent3": {
+          "mentor_should_have": [
+            "데이터 엔지니어링 현직",
+            "Spark/Hadoop 경험",
+            "포트폴리오 리뷰 경험"
+          ]
+        },
+        "agent4": {
+          "asset_tags_should_include": [
+            "포트폴리오_수준_불확실",
+            "IT개발/데이터",
+            "데이터_엔지니어"
+          ]
+        }
+      }
+    }
+  ]
+}

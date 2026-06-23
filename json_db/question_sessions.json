@@ -1,0 +1,199 @@
+{
+  "schema_name": "question_sessions",
+  "version": "v1",
+  "description": "Agent 1 세션 출력 DB — 질문마다 달라지는 진단 필드 저장",
+  "fields": {
+    "session_id": "string",
+    "mentee_id": "string",
+    "mentor_id": "string|null",
+    "answer_id": "string|null",
+    "refined_question": "string",
+    "conversation_summary": "string",
+    "safe_context": "string",
+    "search_query": "string",
+    "match_query": "string",
+    "current_bottleneck": "string",
+    "expected_answer_type": "string",
+    "question_units": "list[dict]",
+    "taxonomy_tags": "dict",
+    "routing_hints": "dict",
+    "hard_case_flags": {
+      "requires_artifact_review": "bool",
+      "recency_sensitive": "bool",
+      "scope_too_broad": "bool",
+      "risk_flags": "list[string]",
+      "question_structure": "string  # single|multi_part_same_goal|multi_goal_overloaded",
+      "document_help_type": "string  # artifact_needed|document_strategy|''",
+      "recency_level": "string  # high|medium|low|''",
+      "recency_reason": "string",
+      "source_role": "string",
+      "target_role": "string",
+      "target_role_specificity": "string",
+      "bridge_hypothesis": "string",
+      "transferable_skills": "list[string]",
+      "target_domain_candidates": "list[string]"
+    },
+    "answer_status": "string  # pending|llm_direct|partial_with_mentor_suggest|mentor_matched|closed",
+    "llm_direct_answer": "string|null",
+    "llm_partial_answer": "string|null",
+    "llm_feedback_score": "float|null",
+    "retrieval_log": "dict",
+    "mentor_fallback_reason": "string|null",
+    "fallback_type": "string|null",
+    "mentor_match_hints": "dict",
+    "created_at": "string",
+    "closed_at": "string|null"
+  },
+  "records": [
+    {
+      "session_id": "ses_4ff59af997a3",
+      "mentee_id": "mt_419279dd6ffe",
+      "mentor_id": "mr_181c39a7c38b",
+      "answer_id": "ans_a1273dae78b4",
+      "refined_question": "사회학과 통계학을 이중전공 중인 3학년 학생입니다. 데이터 분석가로 나아가기 위해 어떻게 준비하면 좋을까요?",
+      "conversation_summary": "멘티는 사회학과 통계학을 이중전공 중인 3학년 학생으로, 데이터 분석가가 되고 싶어합니다. 본전공이 사회학이라 데이터 분석 분야로의 준비 방법에 대해 고민하고 있습니다.",
+      "safe_context": "멘티는 사회학과 통계학을 이중전공 중인 학생으로, 데이터 분석가가 되고 싶어합니다.",
+      "search_query": "데이터 분석가 준비 방법",
+      "match_query": "사회학과 통계학 이중전공 중인 3학년 학생이 데이터 분석가로 전환을 희망하며, 준비 방법에 대한 조언을 구하고 있습니다.",
+      "current_bottleneck": "직무이해_부족",
+      "expected_answer_type": "경험_기반_조언",
+      "question_units": [
+        {
+          "unit": "데이터 분석가로 나아가기 위한 준비 방법",
+          "type": "career_path",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "데이터 분석"
+        ],
+        "role_tags": [
+          "데이터 분석가"
+        ],
+        "question_type_tags": [
+          "career_path"
+        ],
+        "bottleneck_tags": [
+          "직무이해_부족"
+        ],
+        "skill_tags": [
+          "통계학"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ]
+      },
+      "routing_hints": {
+        "interest_domain": [
+          "데이터 분석"
+        ],
+        "transition_type": "없음",
+        "desired_help": "데이터 분석가로 나아가기 위한 준비 방법에 대한 조언",
+        "constraints": [],
+        "career_stage": "대학생",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.8,
+        "target_role_specificity": "narrow",
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "데이터 분석가",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학"
+        ],
+        "target_domain_candidates": [
+          "데이터 분석"
+        ],
+        "risk_flags": []
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "데이터 분석가",
+        "target_role_specificity": "narrow",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학"
+        ],
+        "target_domain_candidates": [
+          "데이터 분석"
+        ]
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {
+        "session_id": "ses_4ff59af997a3",
+        "timestamp": "2026-06-23T16:10:21.314604",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "source_role": "",
+          "target_role": "데이터 분석가",
+          "target_role_specificity": "narrow",
+          "bridge_hypothesis": "",
+          "transferable_skills": [
+            "통계학"
+          ],
+          "target_domain_candidates": [
+            "데이터 분석"
+          ],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": ""
+        },
+        "question_units": [
+          {
+            "unit": "데이터 분석가로 나아가기 위한 준비 방법",
+            "type": "career_path",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 0,
+        "stale_ids": [],
+        "avg_score": 0.0,
+        "verdict": "mentor_needed",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "통계학"
+        ],
+        "target_domain_candidates": [
+          "데이터 분석"
+        ]
+      },
+      "mentor_fallback_reason": "검색된 답변이 데이터 분석가 준비 방법에 대한 구체적인 조언을 제공하지 않으며, 협업에 대한 일반적인 조언만 포함되어 있어 직접적인 근거로 활용하기에 부족함.",
+      "fallback_type": "no_usable_answers",
+      "mentor_match_hints": {
+        "risk_flags": [],
+        "question_units": [
+          "데이터 분석가로 나아가기 위한 준비 방법"
+        ],
+        "current_bottleneck": "직무이해_부족"
+      },
+      "created_at": "2026-06-23 16:10",
+      "closed_at": "2026-06-23 16:11"
+    }
+  ]
+}

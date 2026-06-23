@@ -1,0 +1,851 @@
+{
+  "description": "Agent 1 구조화 평가셋 — 12개 hard case gold annotation",
+  "scoring_weights": {
+    "question_units_correct": 0.25,
+    "current_bottleneck_correct": 0.2,
+    "hard_case_flags_correct": 0.2,
+    "routing_correct": 0.15,
+    "taxonomy_tags_correct": 0.1,
+    "refined_question_quality": 0.05,
+    "privacy_safe": 0.05
+  },
+  "scoring_scale": "1.0=정확 / 0.5=방향맞지만일부누락 / 0.0=틀림",
+  "cases": [
+    {
+      "case_id": "EVAL_A1_001",
+      "source": "CASE_001",
+      "category": "복합질문+서류전략+커리어로드맵",
+      "original_question": "자산운용사 운용역 지망 취준생. CFA L1 합격·학회 팀장 경험. 인턴 없음. 서류 반복 탈락. 1)자소서 전략 2)커피챗 밀도 높이는 법 3)단기·장기 커리어 로드맵.",
+      "gold": {
+        "refined_question": "인턴 경험 없이 자산운용사·증권사 서류 전형을 통과하기 위한 자소서 전략, 커피챗 준비법, 단기·장기 커리어 로드맵을 알고 싶습니다.",
+        "current_bottleneck": "서류전략_자소서",
+        "question_units": [
+          {
+            "unit": "인턴 없는 신입의 자소서 차별화 전략"
+          },
+          {
+            "unit": "현직자 커피챗에서 밀도 높은 질문 방법"
+          },
+          {
+            "unit": "운용역 단기·장기 커리어 로드맵"
+          }
+        ],
+        "source_role": "학생(CFA L1, 학회 팀장)",
+        "target_role": "자산운용사 운용역",
+        "bridge_hypothesis": "리서치 학회·CFA 경험을 실무 기여 의지로 재해석해 서류 톤을 낮추는 방향",
+        "transferable_skills": [
+          "리서치",
+          "밸류에이션",
+          "CFA"
+        ],
+        "target_domain_candidates": [
+          "자산운용사",
+          "증권사 리서치",
+          "VC"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.85,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "general_strategy",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [
+            "서류탈락_반복"
+          ],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "금융/투자"
+          ],
+          "role_tags": [
+            "자산운용사_운용역",
+            "증권사_리서치"
+          ],
+          "question_type_tags": [
+            "서류전략",
+            "커리어로드맵"
+          ],
+          "bottleneck_tags": [
+            "인턴경험_부족",
+            "서류탈락"
+          ],
+          "skill_tags": [
+            "CFA",
+            "리서치"
+          ],
+          "career_stage_tags": [
+            "취준생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_002",
+      "source": "CASE_002",
+      "category": "AI최신전망+recency_sensitive",
+      "original_question": "컴퓨터공학과 대학생. 생성형 AI가 백엔드 코드를 대체하는 시대. 1)대기업 신입 채용 기준 변화 2)AI와 협업하는 엔지니어 역할 3)학부 시절 준비 역량.",
+      "gold": {
+        "refined_question": "생성형 AI 시대에 백엔드 개발자로 살아남기 위해 어떤 역량을 준비해야 하나요? 신입 채용 기준 변화와 AI 협업 방식도 궁금합니다.",
+        "current_bottleneck": "직무전망_불확실성",
+        "question_units": [
+          {
+            "unit": "AI 시대 대기업 백엔드 신입 채용 기준 변화"
+          },
+          {
+            "unit": "AI와 협업하는 엔지니어의 실질 역할"
+          },
+          {
+            "unit": "학부 시절 준비해야 할 핵심 역량"
+          }
+        ],
+        "source_role": "컴공 학부생",
+        "target_role": "백엔드 개발자",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [
+          "대기업 IT",
+          "스타트업"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "rag_first",
+          "search_strategy_confidence": 0.7,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": "high",
+          "recency_reason": "AI 기술 트렌드는 2024~2025 최신 현황이 중요"
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": true,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "IT개발/데이터"
+          ],
+          "role_tags": [
+            "백엔드_개발자"
+          ],
+          "question_type_tags": [
+            "최신전망",
+            "커리어로드맵"
+          ],
+          "bottleneck_tags": [
+            "직무전망_불확실"
+          ],
+          "skill_tags": [
+            "백엔드",
+            "AI협업"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_003",
+      "source": "CASE_003",
+      "category": "산업특화+세부직무_미분화",
+      "original_question": "스포츠 리테일 마케팅 지망 대학생. 나이키·아디다스 등 입사에 필요한 스펙·경험 질문.",
+      "gold": {
+        "refined_question": "스포츠 리테일 브랜드(나이키·아디다스 등) 마케팅 직무에 입사하기 위해 어떤 경험과 스펙을 쌓아야 하나요?",
+        "current_bottleneck": "세부직무_미분화",
+        "question_units": [
+          {
+            "unit": "스포츠 리테일 마케팅 직무의 특수성"
+          },
+          {
+            "unit": "글로벌 스포츠 브랜드 마케터 채용 기준과 필요 스펙"
+          }
+        ],
+        "source_role": "",
+        "target_role": "스포츠 브랜드 마케터",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [
+          "스포츠 브랜드",
+          "리테일 마케팅"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.8,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "마케팅/MD"
+          ],
+          "role_tags": [
+            "브랜드_마케터"
+          ],
+          "question_type_tags": [
+            "커리어로드맵",
+            "직무미분화"
+          ],
+          "bottleneck_tags": [
+            "직무이해_부족",
+            "스펙_불명확"
+          ],
+          "skill_tags": [
+            "리테일마케팅"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_004",
+      "source": "CASE_004",
+      "category": "직무전환+source→target+bridge_hypothesis",
+      "original_question": "외국계 제조업 SCM 3년차(자재관리·생산계획). PM/PO 커리어 피봇 결심. SCM 경험이 기획과 접점 있는지, 어떻게 어필할지 모름.",
+      "gold": {
+        "refined_question": "SCM 3년차 경력을 살려 PM/PO 직무로 전환할 수 있을까요? SCM 경험을 기획 직무에 어떻게 어필해야 하는지 알고 싶습니다.",
+        "current_bottleneck": "기존경력_재해석",
+        "question_units": [
+          {
+            "unit": "SCM 경험의 PM/PO 직무 연결 가능성"
+          },
+          {
+            "unit": "직무 전환 시 경쟁력 있는 어필 전략"
+          },
+          {
+            "unit": "멘토의 직무 전환 경험과 조언"
+          }
+        ],
+        "source_role": "SCM 담당자(자재관리·생산계획)",
+        "target_role": "PM/PO",
+        "bridge_hypothesis": "SCM의 데이터 기반 일정 조율·이해관계자 조율 경험이 PM의 로드맵 관리와 연결됨",
+        "transferable_skills": [
+          "프로젝트 일정관리",
+          "이해관계자 조율",
+          "데이터 기반 의사결정"
+        ],
+        "target_domain_candidates": [
+          "IT 기획",
+          "서비스 기획",
+          "제조 PM"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.9,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "전략기획",
+            "IT개발/데이터"
+          ],
+          "role_tags": [
+            "PM",
+            "PO",
+            "SCM"
+          ],
+          "question_type_tags": [
+            "직무전환",
+            "가능성판단"
+          ],
+          "bottleneck_tags": [
+            "기존경력_재해석",
+            "직무전환_장벽"
+          ],
+          "skill_tags": [
+            "SCM",
+            "프로젝트관리"
+          ],
+          "career_stage_tags": [
+            "직장인_3년차"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_005",
+      "source": "CASE_005",
+      "category": "기술전이+transferable_skills",
+      "original_question": "바이오 의약품 QC 3년차(세포치료제, 무균시험·PCR 전문). 제약업계 내 이직·직무 확장 가능 여부, 어떤 역량이 이식 가능한지 질문.",
+      "gold": {
+        "refined_question": "바이오 QC 3년차(무균시험·Real-Time PCR)로 어떤 회사나 직무로 이직할 수 있을까요? 어떤 역량이 경쟁력 있는지 알고 싶습니다.",
+        "current_bottleneck": "보유기술_전이가능성_판단",
+        "question_units": [
+          {
+            "unit": "바이오 QC 경험의 이직 가능 직무·회사 범위"
+          },
+          {
+            "unit": "핵심 시험법 역량의 시장 경쟁력 평가"
+          },
+          {
+            "unit": "이직 준비 전략과 어필 방법"
+          }
+        ],
+        "source_role": "바이오 의약품 QC (세포치료제)",
+        "target_role": "",
+        "bridge_hypothesis": "세포치료제 QC의 무균시험·PCR 역량이 CRO·대형 제약사 QA/QC에 직접 이식 가능",
+        "transferable_skills": [
+          "무균시험법",
+          "Real-Time PCR",
+          "마이코플라스마시험",
+          "GMP 품질관리"
+        ],
+        "target_domain_candidates": [
+          "제약 QA",
+          "CRO",
+          "바이오벤처",
+          "의료기기"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.88,
+          "target_role_specificity": "unclear",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "연구개발/R&D",
+            "생산/품질/제조"
+          ],
+          "role_tags": [
+            "QC",
+            "QA"
+          ],
+          "question_type_tags": [
+            "가능성판단",
+            "직무전환"
+          ],
+          "bottleneck_tags": [
+            "기술전이_가능성",
+            "이직전략_부재"
+          ],
+          "skill_tags": [
+            "PCR",
+            "무균시험",
+            "GMP"
+          ],
+          "career_stage_tags": [
+            "직장인_3년차"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_006",
+      "source": "CASE_006",
+      "category": "복합질문+recency+멘토개인경험",
+      "original_question": "반도체 엔지니어 지망 대학생. 1)반도체 현업 AI 활용 실태 2)학부 준비 핵심 역량 3)멘토 개인 경험 요청.",
+      "gold": {
+        "refined_question": "반도체 현업에서 AI가 실제로 어떻게 쓰이는지, 학부 시절 어떤 역량을 쌓아야 하는지 멘토님 경험을 바탕으로 알고 싶습니다.",
+        "current_bottleneck": "직무이해_부족",
+        "question_units": [
+          {
+            "unit": "반도체 현업에서의 AI 활용 실태 (설계·공정·수율)"
+          },
+          {
+            "unit": "학부생이 쌓아야 할 반도체 엔지니어 핵심 역량"
+          },
+          {
+            "unit": "멘토의 커리어 경험과 조언"
+          }
+        ],
+        "source_role": "공대 학부생",
+        "target_role": "반도체 엔지니어",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [
+          "반도체 설계",
+          "반도체 공정"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.85,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": "medium",
+          "recency_reason": "AI in 반도체는 최근 2~3년 변화가 큼"
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": true,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "연구개발/R&D"
+          ],
+          "role_tags": [
+            "반도체_엔지니어"
+          ],
+          "question_type_tags": [
+            "커리어로드맵",
+            "최신전망"
+          ],
+          "bottleneck_tags": [
+            "직무이해_부족",
+            "준비방향_불명확"
+          ],
+          "skill_tags": [
+            "반도체",
+            "AI"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_007",
+      "source": "CASE_007",
+      "category": "가능성판단+document_strategy_vs_artifact경계",
+      "original_question": "인문계 1학년. 개인 캐릭터 브랜드 수익화 경험. 전문대 시각디자인과 진학 vs 4년제 편입 고민. 학벌이 취업에 미치는 영향, 포트폴리오 전략 질문.",
+      "gold": {
+        "refined_question": "디자인 취업에서 전문대 학벌이 실질적 걸림돌인지, 개인 브랜드 운영 경험을 포트폴리오에 어떻게 어필할 수 있는지 알고 싶습니다.",
+        "current_bottleneck": "가능성_적합성_판단",
+        "question_units": [
+          {
+            "unit": "디자인 취업에서 전문대 vs 4년제 학벌의 실질적 영향"
+          },
+          {
+            "unit": "개인 캐릭터 브랜드 경험을 포트폴리오로 어필하는 방법"
+          }
+        ],
+        "source_role": "인문계 대학생(자체 브랜드 운영)",
+        "target_role": "디자이너",
+        "bridge_hypothesis": "자체 캐릭터 브랜드 수익화 경험이 실무 감각으로 어필 가능",
+        "transferable_skills": [
+          "브랜드 기획",
+          "일러스트",
+          "SNS 마케팅"
+        ],
+        "target_domain_candidates": [
+          "브랜딩 디자인",
+          "캐릭터 디자인"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.82,
+          "target_role_specificity": "broad",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "general_strategy",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [
+            "학벌_핸디캡"
+          ],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "UX/UI디자인"
+          ],
+          "role_tags": [
+            "디자이너",
+            "브랜딩_디자이너"
+          ],
+          "question_type_tags": [
+            "가능성판단",
+            "자료피드백"
+          ],
+          "bottleneck_tags": [
+            "학벌_핸디캡",
+            "포트폴리오_전략_부재"
+          ],
+          "skill_tags": [
+            "일러스트",
+            "브랜딩"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_008",
+      "source": "CASE_008",
+      "category": "multi_part_same_goal (3문항→단일목표)",
+      "original_question": "무역학 졸업반. 베트남 라면 시장 분석 보고서 작성 중. 1)시장분석→액션플랜 연결 노하우 2)신규 시장진출 4P 전략 3)현업 보고서 접근법.",
+      "gold": {
+        "refined_question": "무역 시장 분석 데이터를 실행 가능한 액션플랜으로 연결하는 방법과 현업 4P 전략 수립 접근법이 궁금합니다.",
+        "current_bottleneck": "실행순서_불명확",
+        "question_units": [
+          {
+            "unit": "시장분석 결과를 실행 가능한 전략으로 전환하는 방법"
+          },
+          {
+            "unit": "신규 해외 진출 시 현업 4P 전략 수립 접근법"
+          },
+          {
+            "unit": "현업 수준의 보고서·발표 구성 방식"
+          }
+        ],
+        "source_role": "무역학 대학생",
+        "target_role": "",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "HS Code 분석",
+          "시장 데이터 분석"
+        ],
+        "target_domain_candidates": [],
+        "expected_answer_type": "정보_요청",
+        "routing_hints": {
+          "search_strategy_hint": "rag_first",
+          "search_strategy_confidence": 0.65,
+          "target_role_specificity": "unclear",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "유통/무역"
+          ],
+          "role_tags": [],
+          "question_type_tags": [
+            "정보요청",
+            "실행전략"
+          ],
+          "bottleneck_tags": [
+            "분석→전략_전환_어려움"
+          ],
+          "skill_tags": [
+            "HS Code",
+            "4P 전략",
+            "시장분석"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_009",
+      "source": "CASE_016",
+      "category": "artifact_review 판별 (포트폴리오 첨부)",
+      "original_question": "데이터 엔지니어링 취준생. Spark·Hadoop 포트폴리오 첨부. 1)포트폴리오 직무 적합성·보완점 2)DE vs DA 방향 선택 3)클라우드·자격증 우선순위.",
+      "gold": {
+        "refined_question": "첨부한 데이터 엔지니어링 포트폴리오의 직무 적합성과 보완점, 그리고 클라우드·자격증 투자 우선순위를 알고 싶습니다.",
+        "current_bottleneck": "포트폴리오_수준_불확실",
+        "question_units": [
+          {
+            "unit": "포트폴리오 직무 적합성 및 보완점 피드백"
+          },
+          {
+            "unit": "데이터 엔지니어링 vs 데이터 분석 방향 선택"
+          },
+          {
+            "unit": "클라우드·자격증 투자 우선순위"
+          }
+        ],
+        "source_role": "",
+        "target_role": "데이터 엔지니어",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "Spark",
+          "Hadoop"
+        ],
+        "target_domain_candidates": [
+          "IT개발/데이터"
+        ],
+        "expected_answer_type": "자료_검토_피드백",
+        "routing_hints": {
+          "search_strategy_hint": "mentor_first",
+          "search_strategy_confidence": 0.8,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "actual_document_review",
+          "recency_level": "medium",
+          "recency_reason": "클라우드 자격증 시장 트렌드 반영 필요"
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": true,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "IT개발/데이터"
+          ],
+          "role_tags": [
+            "데이터_엔지니어"
+          ],
+          "question_type_tags": [
+            "자료피드백",
+            "커리어로드맵"
+          ],
+          "bottleneck_tags": [
+            "포트폴리오_수준_불확실",
+            "방향선택_어려움"
+          ],
+          "skill_tags": [
+            "Spark",
+            "Hadoop",
+            "클라우드"
+          ],
+          "career_stage_tags": [
+            "취준생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_010",
+      "source": "CASE_018",
+      "category": "실행순서_불명확+커리어로드맵",
+      "original_question": "서비스 기획직 준비 대학생. 인턴 5개월·웹 프로젝트 1회. 휴학 중 부트캠프(7개월) vs 개인 프로젝트 고민. SQLD 취득 효용 질문.",
+      "gold": {
+        "refined_question": "서비스 기획 취업을 위해 휴학 기간 동안 7개월 부트캠프와 개인 프로젝트 중 무엇이 더 효과적인가요? SQLD와 포트폴리오 전략도 알고 싶습니다.",
+        "current_bottleneck": "실행순서_불명확",
+        "question_units": [
+          {
+            "unit": "부트캠프 vs 개인 프로젝트 실효성 비교"
+          },
+          {
+            "unit": "서비스 기획 포트폴리오 구성 전략"
+          },
+          {
+            "unit": "SQLD 취득의 실질적 효용"
+          }
+        ],
+        "source_role": "대학생(인턴 5개월)",
+        "target_role": "서비스 기획자",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "인턴 경험",
+          "웹 프로젝트"
+        ],
+        "target_domain_candidates": [],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "rag_first",
+          "search_strategy_confidence": 0.65,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "IT개발/데이터"
+          ],
+          "role_tags": [
+            "서비스_기획자"
+          ],
+          "question_type_tags": [
+            "커리어로드맵",
+            "경험부족"
+          ],
+          "bottleneck_tags": [
+            "실행순서_불명확",
+            "준비방향_선택"
+          ],
+          "skill_tags": [
+            "SQLD",
+            "서비스기획"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_011",
+      "source": "CASE_030",
+      "category": "포트폴리오수량+공백기",
+      "original_question": "브랜딩 디자이너 지망. 학부 프로젝트 2개. 졸업 후 1년 공백. 포트폴리오 개수 충분한지, 기존 심화 vs 신규 추가 중 무엇이 효과적인지 질문.",
+      "gold": {
+        "refined_question": "신입 브랜딩 디자이너 지원 시 학부 프로젝트 2개로 충분한지, 포트폴리오를 추가할지 기존을 심화할지, 졸업 후 공백기를 어떻게 커버해야 하는지 알고 싶습니다.",
+        "current_bottleneck": "포트폴리오_전략_부재",
+        "question_units": [
+          {
+            "unit": "신입 브랜딩 디자이너 포트폴리오 충분 수준"
+          },
+          {
+            "unit": "기존 프로젝트 심화 vs 신규 추가 전략"
+          },
+          {
+            "unit": "졸업 후 공백기 커버 방법"
+          }
+        ],
+        "source_role": "",
+        "target_role": "브랜딩 디자이너",
+        "bridge_hypothesis": "",
+        "transferable_skills": [
+          "브랜딩 프로젝트"
+        ],
+        "target_domain_candidates": [
+          "에이전시",
+          "인하우스"
+        ],
+        "expected_answer_type": "경험_기반_조언",
+        "routing_hints": {
+          "search_strategy_hint": "rag_first",
+          "search_strategy_confidence": 0.7,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "general_strategy",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [
+            "공백기"
+          ],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "UX/UI디자인"
+          ],
+          "role_tags": [
+            "브랜딩_디자이너"
+          ],
+          "question_type_tags": [
+            "자료피드백",
+            "경험부족"
+          ],
+          "bottleneck_tags": [
+            "포트폴리오_부족",
+            "공백기"
+          ],
+          "skill_tags": [
+            "브랜딩"
+          ],
+          "career_stage_tags": [
+            "취준생"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "EVAL_A1_012",
+      "source": "CASE_050",
+      "category": "면접준비+복합질문+document_strategy",
+      "original_question": "화학공학과 4학년. 외국계 기술영업 면접 예정. 영어 PT 구성(자기소개→SWOT→STAR→커리어계획) 피드백 요청. 구성이 빈약한지 질문.",
+      "gold": {
+        "refined_question": "외국계 기업 기술영업 면접 PT 구성(SWOT·STAR·커리어계획)이 적절한지, 보완할 부분이 있는지 피드백 받고 싶습니다.",
+        "current_bottleneck": "자료피드백_실전",
+        "question_units": [
+          {
+            "unit": "PT 목차 구성의 적절성 평가"
+          },
+          {
+            "unit": "기술영업 면접 PT에서 강조해야 할 요소"
+          }
+        ],
+        "source_role": "화학공학과 학생(세일즈 인턴 경험)",
+        "target_role": "기술영업",
+        "bridge_hypothesis": "화학공학 전공 + 영업 인턴 경험의 조합이 기술영업 강점",
+        "transferable_skills": [
+          "엔지니어링 지식",
+          "세일즈 인턴"
+        ],
+        "target_domain_candidates": [
+          "외국계 기업",
+          "기술영업"
+        ],
+        "expected_answer_type": "자료_검토_피드백",
+        "routing_hints": {
+          "search_strategy_hint": "rag_first",
+          "search_strategy_confidence": 0.6,
+          "target_role_specificity": "narrow",
+          "question_structure": "multi_part_same_goal",
+          "document_help_type": "general_strategy",
+          "recency_level": ""
+        },
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false
+        },
+        "taxonomy_tags": {
+          "domain_tags": [
+            "영업"
+          ],
+          "role_tags": [
+            "기술영업"
+          ],
+          "question_type_tags": [
+            "자료피드백",
+            "면접준비"
+          ],
+          "bottleneck_tags": [
+            "PT_전략_불확실"
+          ],
+          "skill_tags": [
+            "PT",
+            "SWOT",
+            "STAR"
+          ],
+          "career_stage_tags": [
+            "대학생"
+          ]
+        }
+      }
+    }
+  ]
+}

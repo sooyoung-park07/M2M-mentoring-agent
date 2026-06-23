@@ -1,0 +1,253 @@
+{
+  "description": "Agent 2 검색·검증 평가셋 — 10개 케이스 (verdict 분류 평가)",
+  "evaluation_metrics": [
+    "wrong_direct_answer_count",
+    "mentor_needed_missed_count",
+    "partial_coverage_correct",
+    "usable_answer_ids_correct",
+    "privacy_safe"
+  ],
+  "cases": [
+    {
+      "case_id": "EVAL_A2_001",
+      "category": "llm_direct 가능 — 일반 정보 질문",
+      "refined_question": "무역 시장 분석 결과를 액션플랜으로 연결하는 현업의 방법론과 4P 전략 수립 접근법을 알고 싶습니다.",
+      "current_bottleneck": "실행순서_불명확",
+      "expected_answer_type": "정보_요청",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_001",
+          "summary": "시장진출 전략 수립 시 데이터 분석→가설 설정→파일럿→확장 단계 설명"
+        },
+        {
+          "answer_id": "ans_sim_002",
+          "summary": "4P 전략을 실제 수출 프로젝트에 적용한 경험 공유"
+        }
+      ],
+      "gold": {
+        "verdict": "llm_direct",
+        "usable_answer_ids": [
+          "ans_sim_001",
+          "ans_sim_002"
+        ],
+        "reason": "일반 방법론 질문으로 기존 답변 + AI 보완으로 충분히 커버 가능"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_002",
+      "category": "llm_direct 가능 — 커리어로드맵 일반",
+      "refined_question": "서비스 기획 취업을 위해 부트캠프와 개인 프로젝트 중 무엇이 더 효과적인가요?",
+      "current_bottleneck": "실행순서_불명확",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_010",
+          "summary": "신입 기획자 포트폴리오 구성 전략 — 팀 프로젝트 경험이 핵심"
+        },
+        {
+          "answer_id": "ans_sim_011",
+          "summary": "부트캠프 실효성: 네트워크와 협업 경험 측면에서 유리"
+        }
+      ],
+      "gold": {
+        "verdict": "llm_direct",
+        "usable_answer_ids": [
+          "ans_sim_010",
+          "ans_sim_011"
+        ],
+        "reason": "커리어로드맵 일반 질문, 개인 맥락 의존도 낮음. 기존 답변으로 AI가 충분히 합성 가능"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_003",
+      "category": "llm_direct 가능 — 최신전망 (recency 확보된 경우)",
+      "refined_question": "AI 시대에 백엔드 개발자로 살아남기 위한 역량 준비법을 알고 싶습니다.",
+      "current_bottleneck": "직무전망_불확실성",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_020",
+          "summary": "AI 도구 활용 능력 + 시스템 설계 역량 중심으로 재정의 필요",
+          "recency_score": 0.85
+        },
+        {
+          "answer_id": "ans_sim_021",
+          "summary": "LLM API 연동, 클라우드 아키텍처 이해가 2024년 기준 핵심"
+        }
+      ],
+      "gold": {
+        "verdict": "llm_direct",
+        "usable_answer_ids": [
+          "ans_sim_020",
+          "ans_sim_021"
+        ],
+        "reason": "최신성 높은 답변이 존재하고 개인 맥락 의존도 낮음"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_004",
+      "category": "partial_with_mentor_suggest — 직무전환 일부 커버",
+      "refined_question": "SCM 3년차 경력을 살려 PM/PO 직무로 전환하려 합니다. SCM 경험을 어떻게 어필해야 할까요?",
+      "current_bottleneck": "기존경력_재해석",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_030",
+          "summary": "PM/PO 신입 포트폴리오 구성 — 사이드 프로젝트 경험이 핵심"
+        },
+        {
+          "answer_id": "ans_sim_031",
+          "summary": "운영·기획 직무 전환 시 현재 경험의 공통점 찾기 전략"
+        }
+      ],
+      "gold": {
+        "verdict": "partial_with_mentor_suggest",
+        "usable_answer_ids": [
+          "ans_sim_031"
+        ],
+        "reason": "SCM→PM 브릿지 일부 커버되지만, 멘티 개인 맥락(외국계 제조업 구체 경력)에 맞는 어필 전략은 현직자 경험이 필요"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_005",
+      "category": "partial_with_mentor_suggest — 포트폴리오 일반 가이드 vs 실제 검토",
+      "refined_question": "브랜딩 디자이너 포트폴리오 2개로 신입 지원이 가능한지, 기존 심화 vs 신규 추가 중 무엇이 나을지 알고 싶습니다.",
+      "current_bottleneck": "포트폴리오_전략_부재",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_040",
+          "summary": "신입 브랜딩 포트폴리오는 3~5개 권장, 완성도 우선"
+        },
+        {
+          "answer_id": "ans_sim_041",
+          "summary": "에이전시 신입 채용에서 포트폴리오 평가 기준 설명"
+        }
+      ],
+      "gold": {
+        "verdict": "partial_with_mentor_suggest",
+        "usable_answer_ids": [
+          "ans_sim_040",
+          "ans_sim_041"
+        ],
+        "reason": "일반 가이드는 커버되지만 졸업 후 1년 공백 처리 전략은 개인 경험 기반 조언이 더 유효"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_006",
+      "category": "partial_with_mentor_suggest — 면접 PT 일반 가이드",
+      "refined_question": "외국계 기업 기술영업 면접 PT 구성(SWOT·STAR)이 적절한지 피드백 받고 싶습니다.",
+      "current_bottleneck": "자료피드백_실전",
+      "expected_answer_type": "자료_검토_피드백",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_050",
+          "summary": "기술영업 면접 PT 구성 팁 — 강점과 직무 연결이 핵심"
+        },
+        {
+          "answer_id": "ans_sim_051",
+          "summary": "STAR 기법 면접 답변 구성 방법"
+        }
+      ],
+      "gold": {
+        "verdict": "partial_with_mentor_suggest",
+        "usable_answer_ids": [
+          "ans_sim_050"
+        ],
+        "reason": "일반 PT 구성법은 AI로 커버 가능하지만 화학공학+기술영업 조합 어필 전략은 현직자 검토가 유효"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_007",
+      "category": "partial_with_mentor_suggest — 스포츠 브랜드 특화 정보 부족",
+      "refined_question": "스포츠 리테일 브랜드 마케터에 입사하기 위해 어떤 경험과 스펙을 쌓아야 하나요?",
+      "current_bottleneck": "세부직무_미분화",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_060",
+          "summary": "브랜드 마케터 일반 준비법 — 인턴 경험과 캠페인 기획"
+        },
+        {
+          "answer_id": "ans_sim_061",
+          "summary": "FMCG 마케터 채용 기준 — 소비자 인사이트 역량"
+        }
+      ],
+      "gold": {
+        "verdict": "partial_with_mentor_suggest",
+        "usable_answer_ids": [
+          "ans_sim_060"
+        ],
+        "reason": "일반 브랜드 마케팅은 커버되지만 스포츠 리테일 특화 인사이트는 현직자가 필요"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_008",
+      "category": "mentor_needed — 기존경력 재해석 + 개인 경험 필수",
+      "refined_question": "바이오 QC 3년차(무균시험·PCR 전문)로 어떤 직무·회사로 이직할 수 있을까요? 제 역량이 시장에서 경쟁력 있는지 알고 싶습니다.",
+      "current_bottleneck": "보유기술_전이가능성_판단",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_070",
+          "summary": "제약 QC 이직 시 고려할 회사 유형 — CRO, 대형 제약사"
+        },
+        {
+          "answer_id": "ans_sim_071",
+          "summary": "바이오 취업 준비 일반 가이드"
+        }
+      ],
+      "gold": {
+        "verdict": "mentor_needed",
+        "usable_answer_ids": [],
+        "reason": "세포치료제 특화 시험법의 시장 경쟁력은 현직 제약 멘토만 정확히 평가 가능. 개인 역량 판단은 AI가 대체 불가"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_009",
+      "category": "mentor_needed — 서류 반복탈락 + 자소서 직접 피드백",
+      "refined_question": "자산운용사 운용역 지망 취준생(CFA L1, 인턴 없음). 서류 반복 탈락 중. 자소서 전략과 커피챗 준비법을 알고 싶습니다.",
+      "current_bottleneck": "서류전략_자소서",
+      "expected_answer_type": "경험_기반_조언",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_080",
+          "summary": "자산운용 신입 자소서 — 겸손한 톤으로 실무 기여 의지 강조"
+        },
+        {
+          "answer_id": "ans_sim_081",
+          "summary": "금융권 커피챗 준비법 — 현직자 질문 템플릿"
+        }
+      ],
+      "gold": {
+        "verdict": "mentor_needed",
+        "usable_answer_ids": [
+          "ans_sim_080"
+        ],
+        "reason": "서류 탈락 원인 진단과 개인 자소서 피드백은 현직 운용역만 정확히 판단 가능. 커피챗 질문법은 부분 커버"
+      }
+    },
+    {
+      "case_id": "EVAL_A2_010",
+      "category": "mentor_needed — artifact_review 필요",
+      "refined_question": "데이터 엔지니어링 취준생. 첨부한 포트폴리오(Spark·Hadoop 중심)의 직무 적합성과 보완점을 피드백 받고 싶습니다.",
+      "current_bottleneck": "포트폴리오_수준_불확실",
+      "expected_answer_type": "자료_검토_피드백",
+      "retrieved_answers": [
+        {
+          "answer_id": "ans_sim_090",
+          "summary": "데이터 엔지니어 포트폴리오 구성 일반 가이드"
+        },
+        {
+          "answer_id": "ans_sim_091",
+          "summary": "Spark 프로젝트 어필 포인트 — 데이터 처리 규모와 파이프라인 설계"
+        }
+      ],
+      "gold": {
+        "verdict": "mentor_needed",
+        "usable_answer_ids": [],
+        "reason": "실제 첨부 포트폴리오 검토가 필요한 케이스. AI가 문서 없이 맥락 판단 불가. requires_artifact_review=True"
+      }
+    }
+  ]
+}
