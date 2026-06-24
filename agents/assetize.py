@@ -1,5 +1,5 @@
 """
-에이전트 4: 자산화 에이전트 v2
+에이전트 4: 자산화 에이전트
 
 [에이전트 루프]
 관찰0: 이중 동의 확인 (멘토 동의 AND 멘티 동의)
@@ -8,19 +8,12 @@
 행동3: LLM 품질 판단 4종
   - 개인맥락 강도:  isolated / transferable
   - 정보 밀도:     low / high
-  - 시의성:       stale / stale_but_useful / timeless  ← v2: 3단계
+  - 시의성:       stale / stale_but_useful / timeless
   - 회사 기밀성:   sensitive / safe
 행동4: 메타데이터 생성 (자산화 통과 시)
   - asset_summary, transferability_scope
   - domain/role/question_type/bottleneck/skill/career_stage 태그
-관찰4: 최종 저장 (풍부한 record 스키마)
-
-핵심 변경점 (v2):
-  - recency 3단계: stale_but_useful은 통과 (requires_latest_check=true 표시)
-  - 메타데이터 LLM 생성: Agent 2 검색품질 향상을 위한 태그 전면 확장
-  - reject_reasons 구조화: 실패 원인 운영 추적 가능
-  - embedding 텍스트: question+answer_summarize → asset_summary+transferability_scope
-  - Agent 1 taxonomy_tags 수신: 외부 태그와 병합
+관찰4: 최종 저장
 """
 
 import json
@@ -198,7 +191,7 @@ class AssetizeAgent:
         expected_answer_type: str = "",
         question_units: list[dict] | None = None,
     ) -> dict:
-        print("[자산화 에이전트 v2] 실행 중...")
+        print("[자산화 에이전트] 실행 중...")
         taxonomy_tags  = taxonomy_tags or {}
         question_units = question_units or []
 

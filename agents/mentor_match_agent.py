@@ -1,30 +1,17 @@
 """
-에이전트 3: 멘토 매칭 에이전트 v2
+에이전트 3: 멘토 매칭 에이전트
 
 [에이전트 루프]
-관찰1: 파이프라인 실행 → top-K 후보 확보
-판단1: 매칭 품질이 충분한가?
-  충분 → LLM 최종 선별 → 확정
-  부족 → 임계값 완화 후 재시도 (최대 2회)
+관찰1: 임베딩 유사도 계산 → 규칙 필터 → 재정렬 → top-K 후보 확보
+판단1: 후보 ≥ 3명 AND 평균 유사도 ≥ 0.4?
+  충분 → LLM 최종 Top-3 선별
+  부족 → 임계값 완화 (0.30 → 0.15) 후 재시도
   끝까지 부족 → 구조화된 실패 반환
 
-파이프라인 내부:
-  Step1: 통합 임베딩 유사도 계산 (프로필+경력+기존답변 3채널)
-  Step2: 1차 규칙 필터
-    - 최소 유사도 + accepting_new_questions
-    - 도메인/직무/전환/desired_help 보너스 (기존)
-    - current_bottleneck / bridge_hypothesis / transferable_skills 보너스 (v2 신규)
-  Step3: 2차 재정렬 (유사도×0.55 + 만족도×0.20 + 활동량×0.10 + 수용가능×0.15)
-  Step4: LLM 최종 Top-3 선별
-    - Agent 1 구조화 프로파일 전달 (bottleneck, bridge, source/target role)
-    - Agent 2 fallback mentor_match_hints 전달
-    - 평가 기준 7개 (기존 5 + bottleneck_fit + transition_bridge_fit)
-
-핵심 설계:
-- LLM은 후보 안에서만 선택 + 추천 이유만 담당
-- 정량 점수는 코드가 계산, 모든 점수는 0~1 정규화
-- Agent 1 구조화 필드를 최대한 활용해 단순 직무 유사도 → 병목 해결형 매칭으로 전환
-- 실패 시 구조화된 reason 반환 (어떤 멘토 풀이 부족한지 운영 추적 가능)
+Step1: 3채널 임베딩 (프로필×0.30 + 경력×0.30 + 기존답변×0.40)
+Step2: 규칙 필터 (최소 유사도 + 수용가능 여부 + 도메인/병목/전환/desired_help 보너스, 총 cap 0.25)
+Step3: 재정렬 (유사도×0.55 + 만족도×0.20 + 활동량×0.10 + 수용가능×0.15)
+Step4: LLM Top-3 선별 (7개 기준, 후보 외 mentor_id 출력 시 제거)
 """
 
 import os
@@ -137,7 +124,7 @@ class MentorMatchAgent:
         conversation_summary: str,
         mentee_constraints: dict | None = None,
     ) -> dict:
-        print("[멘토 매칭 에이전트 v2] 실행 중...")
+        print("[멘토 매칭 에이전트] 실행 중...")
 
         mentee_constraints = mentee_constraints or {}
 

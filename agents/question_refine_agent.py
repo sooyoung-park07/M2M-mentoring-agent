@@ -1,25 +1,11 @@
 """
-에이전트 1: 질문 정제 에이전트 (v4)
+에이전트 1: 질문 정제 에이전트
 
-v3 개선 사항:
-  - REFINEMENT_PROMPT: 3층 구조 + question_units / current_bottleneck /
-    assumption_to_validate / expected_answer_type / evidence_assets 추가
-  - taxonomy_tags → 분리형 객체 (domain/question_type/career_stage/constraint/tone)
-  - CHECK_PROMPT: question_quality + intent_router 추가
-  - SYSTEM_PROMPT: 4개 대화 예시 추가 (질문 과잉형·스펙 나열형·불안형·도메인 집중형)
-  - self-refine: _finalize() 내부 1회 품질 재검토
-  - 유틸: clamp01(), normalize_enum(), has_pii_risk(), redact_pii()
-  - REFINEMENT_PROMPT few-shot 2개 내장 (금융형·백엔드형)
-
-v4 개선 사항 (3개 실사례 패턴 반영):
-  - Hard-case Rules 5개 추가 (직무전환·전이가능성·복합질문·멘토경험·시간민감)
-  - routing_hints 확장: source_role, bridge_hypothesis, transferable_skills,
-    target_domain_candidates, target_role_specificity, search_strategy_confidence,
-    requires_artifact_review, risk_flags, recency_sensitive, scope_too_broad
-  - question_units 스키마 확장: priority, answerability, recency_sensitive
-  - REFINE_CHECK_PROMPT: bridge_hypothesis·recency_flags 체크 추가 (총 10개)
-  - _finalize(): 신규 필드 추출·인스턴스 저장 + bool/list 안전 변환
-  ※ 추가 few-shot 슬롯 3개는 외부 데이터 수령 후 채울 것
+[에이전트 루프]
+관찰: 멘티 입력 수집 → 충분성 체크 (5개 항목 가중 점수, 최대 10턴)
+판단: 5개 항목 중 4개 이상 ≥ 0.7 + 필수(관심_직무·알고_싶은_내용) + 질문 품질 ≥ 0.6
+행동: 충분 → 정제 실행 / 부족 → 추가 질문 생성
+정제: REFINEMENT_PROMPT로 3층 JSON 생성 → REFINE_CHECK_PROMPT로 13개 기준 self-refine (1회)
 """
 
 import os
