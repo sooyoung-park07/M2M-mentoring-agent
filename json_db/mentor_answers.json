@@ -77845,6 +77845,49 @@
         "company_sensitivity": "미판단"
       },
       "created_at": "2026-06-23 16:11"
+    },
+    {
+      "answer_id": "ans_45a962459258",
+      "session_id": "ses_f0f017093222",
+      "mentor_id": "mr_103c6e09c511",
+      "question_content": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요? 국문과 전공자로서 필요한 스킬과 준비 방법이 궁금합니다.",
+      "answer_content": "콘텐츠 마케팅이란 대단한 거시죠",
+      "answer_summarize": "콘텐츠 마케팅의 대단성",
+      "asset_summary": "",
+      "domain_tags": [
+        "콘텐츠 마케팅",
+        "글쓰기"
+      ],
+      "role_tags": [],
+      "question_type_tags": [],
+      "bottleneck_tags": [],
+      "skill_tags": [],
+      "career_stage_tags": [],
+      "source_role": "",
+      "target_role": "",
+      "expected_answer_type": "",
+      "transferability_scope": "",
+      "question_units": [],
+      "recency_status": "미판단",
+      "requires_latest_check": false,
+      "company_sensitivity": "미판단",
+      "personal_context": "미판단",
+      "info_density": "미판단",
+      "embedding": null,
+      "is_assetized": false,
+      "reuse_count": 0,
+      "satisfaction_score": null,
+      "reject_reason": "length / duplicate",
+      "reject_reasons": {
+        "consent": true,
+        "length": false,
+        "duplicate": false,
+        "personal_context": "미판단",
+        "info_density": "미판단",
+        "recency": "미판단",
+        "company_sensitivity": "미판단"
+      },
+      "created_at": "2026-07-01 10:08"
     }
   ]
 }

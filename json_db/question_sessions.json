@@ -194,6 +194,224 @@
       },
       "created_at": "2026-06-23 16:10",
       "closed_at": "2026-06-23 16:11"
+    },
+    {
+      "session_id": "ses_290842a301ea",
+      "mentee_id": "mt_d07c25fd1f77",
+      "mentor_id": null,
+      "answer_id": null,
+      "refined_question": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요? 국문과 전공자로서 필요한 스킬과 준비 방법이 궁금합니다.",
+      "conversation_summary": "국문과 3학년을 마친 학생으로, 글쓰기를 활용할 수 있는 콘텐츠 마케팅 분야에 관심이 있습니다. 이 분야에서 필요한 스킬과 준비 방법에 대해 알고 싶어합니다.",
+      "safe_context": "국문과 3학년 학생이 콘텐츠 마케팅 분야에 관심이 있으며, 글쓰기 역량을 어떻게 활용할 수 있을지 궁금해합니다.",
+      "search_query": "콘텐츠 마케팅 글쓰기 역량 활용 국문과 준비 방법",
+      "match_query": "국문과 3학년 학생으로, 글쓰기를 활용할 수 있는 콘텐츠 마케팅 분야에 관심이 있습니다. 이 분야에서 필요한 스킬과 준비 방법에 대해 알고 싶어합니다.",
+      "current_bottleneck": "직무 이해 부족 — 글쓰기 역량을 콘텐츠 마케팅에서 어떻게 활용할지 모름",
+      "expected_answer_type": "경험기반조언",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬로드맵",
+          "question": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "마케팅"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "직무이해"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "콘텐츠 마케팅",
+        "interest_domain": [
+          "마케팅"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비/직무 이해",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.7,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "",
+        "target_role_specificity": "unclear",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "pending",
+      "llm_direct_answer": null,
+      "llm_partial_answer": null,
+      "llm_feedback_score": null,
+      "retrieval_log": {},
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-07-01 10:07",
+      "closed_at": null
+    },
+    {
+      "session_id": "ses_f0f017093222",
+      "mentee_id": "mt_d07c25fd1f77",
+      "mentor_id": "mr_103c6e09c511",
+      "answer_id": "ans_45a962459258",
+      "refined_question": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요? 국문과 전공자로서 필요한 스킬과 준비 방법이 궁금합니다.",
+      "conversation_summary": "",
+      "safe_context": "국문과 3학년 학생이 콘텐츠 마케팅 분야에 관심이 있으며, 글쓰기 역량을 어떻게 활용할 수 있을지 궁금해합니다.",
+      "search_query": "콘텐츠 마케팅 글쓰기 역량 활용 국문과 준비 방법",
+      "match_query": "국문과 3학년 학생으로, 글쓰기를 활용할 수 있는 콘텐츠 마케팅 분야에 관심이 있습니다. 이 분야에서 필요한 스킬과 준비 방법에 대해 알고 싶어합니다.",
+      "current_bottleneck": "직무 이해 부족 — 글쓰기 역량을 콘텐츠 마케팅에서 어떻게 활용할지 모름",
+      "expected_answer_type": "경험기반조언",
+      "question_units": [
+        {
+          "rank": 1,
+          "type": "스킬로드맵",
+          "question": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요?",
+          "priority": "primary",
+          "answerability": "mentor_needed",
+          "recency_sensitive": false
+        }
+      ],
+      "taxonomy_tags": {
+        "domain_tags": [
+          "마케팅"
+        ],
+        "question_type_tags": [
+          "스킬준비",
+          "직무이해"
+        ],
+        "career_stage_tags": [
+          "대학생"
+        ],
+        "constraint_tags": [],
+        "tone_need_tags": [
+          "경험기반조언",
+          "실행로드맵"
+        ]
+      },
+      "routing_hints": {
+        "target_role": "콘텐츠 마케팅",
+        "interest_domain": [
+          "마케팅"
+        ],
+        "career_stage": "대학생",
+        "desired_help": "스킬 준비/직무 이해",
+        "transition_type": "없음",
+        "source_role": "",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": [],
+        "constraints": [],
+        "personal_context_strength": "moderate",
+        "search_strategy_hint": "mentor_first",
+        "search_strategy_confidence": 0.7,
+        "requires_artifact_review": false,
+        "risk_flags": [],
+        "recency_sensitive": false,
+        "question_structure": "single",
+        "scope_too_broad": false
+      },
+      "hard_case_flags": {
+        "requires_artifact_review": false,
+        "recency_sensitive": false,
+        "scope_too_broad": false,
+        "risk_flags": [],
+        "question_structure": "single",
+        "document_help_type": "",
+        "recency_level": "",
+        "recency_reason": "",
+        "source_role": "",
+        "target_role": "콘텐츠 마케팅",
+        "target_role_specificity": "specific",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "answer_status": "closed",
+      "llm_direct_answer": null,
+      "llm_partial_answer": "완전히 일치하는 사례는 없지만 참고할 수 있는 경험을 정리해드립니다.\n\n1. **참고 가능한 내용 (비식별화 요약)**\n   - 콘텐츠 마케팅에서 글쓰기 역량을 활용할 때, \"누구에게, 무엇을 위해\" 콘텐츠를 만들지를 먼저 고려하는 것이 중요합니다. 이는 콘텐츠가 단순히 창작물이 아니라 비즈니스 문제 해결의 도구로서 기능해야 하기 때문입니다. 타깃의 욕구와 브랜드의 비즈니스 과제가 만나는 지점에서 콘텐츠 기획이 시작되어야 합니다.\n\n2. **현재 질문에 그대로 적용하기 어려운 부분**\n   - 참고 답변은 콘텐츠 기획의 전반적인 접근 방식에 대한 내용이지만, 국문과 전공자로서 필요한 구체적인 스킬이나 준비 방법에 대한 직접적인 언급은 없습니다.\n\n3. **일반적으로 생각해볼 수 있는 준비 방향**\n   - 일반적으로는 국문과 전공자의 글쓰기 역량을 활용하기 위해, 타깃 독자 분석 및 시장 조사 능력을 기르는 것이 중요합니다. 또한, 디지털 마케팅 도구와 플랫폼에 대한 이해를 높이는 것도 도움이 될 수 있습니다.\n\n4. **현직자 멘토에게 확인하면 좋은 질문 2~3개**\n   - 콘텐츠 마케팅 분야에서 국문과 전공자가 특히 강점을 가질 수 있는 부분은 무엇인가요?\n   - 글쓰기 외에 콘텐츠 마케팅 실무에서 필요한 기술이나 지식은 무엇인가요?\n   - 초보자가 콘텐츠 마케팅 분야에 진입하기 위해 준비할 수 있는 실질적인 방법은 무엇인가요?\n\n본인 상황에 맞는 더 정확한 조언을 위해 현직자 멘토 연결을 권장드립니다.",
+      "llm_feedback_score": 0.75,
+      "retrieval_log": {
+        "session_id": "ses_f0f017093222",
+        "timestamp": "2026-07-01T10:07:26.241000",
+        "hard_case_flags": {
+          "requires_artifact_review": false,
+          "risk_flags": [],
+          "recency_sensitive": false,
+          "scope_too_broad": false,
+          "source_role": "",
+          "target_role": "콘텐츠 마케팅",
+          "target_role_specificity": "specific",
+          "bridge_hypothesis": "",
+          "transferable_skills": [],
+          "target_domain_candidates": [],
+          "question_structure": "single",
+          "document_help_type": "",
+          "recency_level": "",
+          "recency_reason": ""
+        },
+        "question_units": [
+          {
+            "rank": 1,
+            "type": "스킬로드맵",
+            "question": "콘텐츠 마케팅 분야에서 글쓰기 역량을 어떻게 활용할 수 있을까요?",
+            "priority": "primary",
+            "answerability": "mentor_needed",
+            "recency_sensitive": false
+          }
+        ],
+        "strategy": "mentor_first",
+        "threshold_boost": 0.0,
+        "retrieved_count": 1,
+        "usable_count": 1,
+        "stale_ids": [],
+        "avg_score": 0.625,
+        "verdict": "partial_with_mentor_suggest",
+        "bridge_hypothesis": "",
+        "transferable_skills": [],
+        "target_domain_candidates": []
+      },
+      "mentor_fallback_reason": null,
+      "fallback_type": null,
+      "mentor_match_hints": {},
+      "created_at": "2026-07-01 10:07",
+      "closed_at": "2026-07-01 10:08",
+      "mentor_suggested": true
     }
   ]
 }

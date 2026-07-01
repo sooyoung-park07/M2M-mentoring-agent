@@ -12,7 +12,7 @@ import os
 import re
 import json
 from openai import OpenAI
-from db.json_db import create_session, new_id
+from db.json_db import create_question_session as create_session, new_id
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
@@ -596,7 +596,7 @@ class QuestionRefineAgent:
             f"{'사용자' if m['role'] == 'user' else '에이전트'}: {m['content']}"
             for m in self.messages if m["role"] in ("user", "assistant")
         )
-        prompt = CHECK_PROMPT.format(transcript=transcript)
+        prompt = CHECK_PROMPT.replace("{transcript}", transcript)
         check_messages = [
             {"role": "system", "content": CHECK_SYSTEM},
             {"role": "user",   "content": prompt},
@@ -677,8 +677,8 @@ class QuestionRefineAgent:
         """self-refine: 생성 결과 품질 검토 → (pass, fix_instructions)"""
         check_messages = [
             {"role": "system", "content": "너는 진로 멘토링 질문 정제 결과를 평가하는 evaluator다. JSON만 출력한다."},
-            {"role": "user",   "content": REFINE_CHECK_PROMPT.format(
-                refinement_json=json.dumps(result, ensure_ascii=False, indent=2)
+            {"role": "user",   "content": REFINE_CHECK_PROMPT.replace(
+                "{refinement_json}", json.dumps(result, ensure_ascii=False, indent=2)
             )},
         ]
         try:
@@ -785,11 +785,14 @@ class QuestionRefineAgent:
             mentee_id=self.mentee_id,
             refined_question=refined_question,
             conversation_summary=conversation_summary,
-            collected_info=collected_info,
-            routing_hints=routing_hints,
+            safe_context=safe_context,
             search_query=search_query,
             match_query=match_query,
+            current_bottleneck=current_bottleneck,
+            expected_answer_type=expected_ans_type,
+            question_units=question_units,
             taxonomy_tags=taxonomy_tags,
+            routing_hints=routing_hints,
         )
 
         # 5. 에이전트 상태에 저장
